@@ -35,6 +35,16 @@
 /* Page rules for PDF */
 @page { size: A4; margin: 0; }
 
+@media print {
+  .page {
+    overflow: visible !important;
+    page-break-inside: auto;
+  }
+  .cover-page {
+    overflow: hidden !important;
+  }
+}
+
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
 /* ================================================================
@@ -194,12 +204,12 @@ body {
   border: 1px solid #d0d8dc;
   position: relative;
   overflow: hidden;
-  padding: 48px 44px;
-  page-break-after: always;
+  padding: 50px 48px;
+  page-break-before: always;
+  page-break-inside: avoid;
 }
-
-.page:last-child {
-  page-break-after: auto;
+.page:first-of-type {
+  page-break-before: auto;
 }
 
 .bg-grid {
@@ -313,7 +323,7 @@ body {
    SECTION TITLES
    ================================================================ */
 .section {
-  margin-bottom: 28px;
+  margin-bottom: 32px;
   page-break-inside: avoid;
 }
 
@@ -322,6 +332,7 @@ body {
   color: var(--accent-primary); margin-bottom: 14px;
   display: flex; align-items: center; gap: 10px;
   text-transform: uppercase; letter-spacing: 1px;
+  page-break-after: avoid;
 }
 
 .section-title span {
@@ -397,6 +408,7 @@ body {
   background: rgba(10,143,136,0.03);
   border-radius: 0 10px 10px 0;
   text-indent: 0;
+  page-break-inside: avoid;
 }
 
 .editorial-pullquote .attribution {
@@ -416,6 +428,7 @@ body {
   display: flex; gap: 12px;
   margin: 20px 0;
   text-indent: 0;
+  page-break-inside: avoid;
 }
 
 .stat-item {
@@ -459,7 +472,8 @@ body {
   background: var(--bg-secondary);
   border: 1px solid var(--border-color);
   border-radius: var(--border-radius-lg);
-  padding: 16px 20px;
+  padding: 18px 22px;
+  page-break-inside: avoid;
 }
 
 .feat-card-title {
@@ -572,6 +586,7 @@ body {
   font-size: 13.5px;
   line-height: 1.65;
   color: #2d363d;
+  page-break-inside: avoid;
 }
 
 .callout-box strong {
@@ -596,8 +611,9 @@ body {
   border: 1px solid var(--border-color);
   border-left: 3px solid var(--accent-hover);
   border-radius: 0 var(--border-radius-lg) var(--border-radius-lg) 0;
-  padding: 14px 18px;
+  padding: 16px 20px;
   margin-bottom: 10px;
+  page-break-inside: avoid;
 }
 
 .impact-card h4 {
@@ -657,6 +673,7 @@ body {
   position: relative;
   padding-left: 22px;
   margin: 14px 0;
+  page-break-inside: avoid;
 }
 
 .timeline::before {
