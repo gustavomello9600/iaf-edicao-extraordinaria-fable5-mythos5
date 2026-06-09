@@ -1,1564 +1,1523 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>IAF — Edição Extraordinária: Fable 5 / Mythos 5</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;700&family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@300;400;600;700;900&family=Spectral:wght@300;400;600;700;800&display=swap" rel="stylesheet">
-<style>
-/* ================================================================
-   IAF VISUAL IDENTITY — LIGHT MODE ☀️
+1|<!DOCTYPE html>
+2|<html lang="pt-BR">
+3|<head>
+4|<meta charset="UTF-8">
+5|<meta name="viewport" content="width=device-width, initial-scale=1.0">
+6|<title>IAF — Edição Extraordinária: Fable 5 / Mythos 5</title>
+7|<link rel="preconnect" href="https://fonts.googleapis.com">
+8|<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+9|<link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;700&family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@300;400;600;700;900&family=Spectral:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+10|<style>
+11|/* ================================================================
+12|   IAF VISUAL IDENTITY — LIGHT MODE ☀️
+13|   ================================================================ */
+14|:root {
+15|  --bg-primary: #ffffff;
+16|  --bg-secondary: #f4f7f9;
+17|  --accent-primary: #0a8f88;
+18|  --accent-hover: #06b8a0;
+19|  --accent-muted: rgba(10, 143, 136, 0.08);
+20|  --accent-terracotta: #c75b3e;
+21|  --accent-sage: #5f7a6b;
+22|  --accent-amber: #b8860b;
+23|  --text-primary: #1a1f24;
+24|  --text-secondary: #5a6b72;
+25|  --border-color: rgba(10, 143, 136, 0.18);
+26|  --border-radius-lg: 14px;
+27|  --border-radius-sm: 6px;
+28|  --font-title: 'Outfit', sans-serif;
+29|  --font-body: 'Inter', sans-serif;
+30|  --font-code: 'Fira Code', monospace;
+31|  --font-editorial: 'Spectral', serif;
+32|  --shadow-card: 0 2px 12px rgba(0,0,0,0.05);
+33|}
+34|
+35|/* Page rules for PDF */
+36|/* ================================================================
+   MOBILE-FIRST RESPONSIVE — Single continuous scroll
    ================================================================ */
-:root {
-  --bg-primary: #ffffff;
-  --bg-secondary: #f4f7f9;
-  --accent-primary: #0a8f88;
-  --accent-hover: #06b8a0;
-  --accent-muted: rgba(10, 143, 136, 0.08);
-  --accent-terracotta: #c75b3e;
-  --accent-sage: #5f7a6b;
-  --accent-amber: #b8860b;
-  --text-primary: #1a1f24;
-  --text-secondary: #5a6b72;
-  --border-color: rgba(10, 143, 136, 0.18);
-  --border-radius-lg: 14px;
-  --border-radius-sm: 6px;
-  --font-title: 'Outfit', sans-serif;
-  --font-body: 'Inter', sans-serif;
-  --font-code: 'Fira Code', monospace;
-  --font-editorial: 'Spectral', serif;
-  --shadow-card: 0 2px 12px rgba(0,0,0,0.05);
+body {
+  font-family: var(--font-body);
+  background-color: #e8edf0;
+  color: var(--text-primary);
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  margin: 0;
+  padding: 0;
 }
 
-/* Page rules for PDF */
-@page { size: A4; margin: 0; }
-
-@media print {
-  .page {
-    overflow: visible !important;
-    page-break-inside: auto;
-  }
-  .cover-page {
-    overflow: hidden !important;
-  }
-}
-
-* { margin: 0; padding: 0; box-sizing: border-box; }
-
-/* ================================================================
-   COVER PAGE — First page, full A4, no margins
-   ================================================================ */
+/* Cover becomes a hero section, not a page */
 .cover-page {
-  width: 210mm; height: 297mm;
+  width: 100%;
+  min-height: 100vh;
   background: linear-gradient(160deg, #064e4a 0%, #0a8f88 40%, #0ba89e 70%, #06b8a0 100%);
   position: relative;
   overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
-  page-break-after: always;
-}
-
-.cover-grid {
-  position: absolute; top: 0; left: 0; right: 0; bottom: 0;
-  background-image:
-    linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
-  background-size: 40px 40px;
-  pointer-events: none;
-}
-
-.cover-glow-top {
-  position: absolute;
-  width: 600px; height: 600px;
-  background: radial-gradient(circle, rgba(255,255,255,0.08) 0%, transparent 70%);
-  top: -200px; right: -150px;
-  pointer-events: none;
-}
-
-.cover-glow-bottom {
-  position: absolute;
-  width: 500px; height: 500px;
-  background: radial-gradient(circle, rgba(0,0,0,0.1) 0%, transparent 70%);
-  bottom: -150px; left: -100px;
-  pointer-events: none;
-}
-
-.cover-svg-curve {
-  position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-  pointer-events: none; opacity: 0.12;
-}
-
-.cover-content {
-  position: relative; z-index: 3;
-  text-align: center;
-  padding: 40px 50px;
-  max-width: 650px;
-}
-
-.cover-badge {
-  display: inline-block;
-  font-family: var(--font-code);
-  font-size: 10px; font-weight: 700;
-  letter-spacing: 5px;
-  text-transform: uppercase;
-  color: rgba(255,255,255,0.9);
-  border: 1px solid rgba(255,255,255,0.3);
-  padding: 8px 22px;
-  border-radius: 30px;
-  margin-bottom: 28px;
-  background: rgba(255,255,255,0.06);
-  backdrop-filter: blur(4px);
-}
-
-.cover-title {
-  font-family: var(--font-title);
-  font-weight: 900;
-  font-size: 46px;
-  line-height: 1.15;
-  letter-spacing: -0.8px;
-  color: #ffffff;
-  margin-bottom: 16px;
-}
-
-.cover-title .accent-word {
-  background: linear-gradient(135deg, #ffffff 0%, #00ffd5 100%);
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-.cover-subtitle {
-  font-family: var(--font-editorial);
-  font-size: 18px;
-  font-weight: 400;
-  font-style: italic;
-  color: rgba(255,255,255,0.75);
-  line-height: 1.5;
-  margin-bottom: 28px;
-}
-
-.cover-divider {
-  width: 70px; height: 2px;
-  background: rgba(255,255,255,0.4);
-  margin: 0 auto 24px;
-}
-
-.cover-meta {
-  font-family: var(--font-code);
-  font-size: 9px;
-  font-weight: 500;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  color: rgba(255,255,255,0.55);
-}
-
-.cover-meta span {
-  margin: 0 12px;
-}
-
-.cover-logo {
-  position: absolute;
-  bottom: 35px;
-  right: 40px;
-  z-index: 3;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  line-height: 1;
-}
-
-.cover-logo-acronym {
-  font-family: var(--font-title);
-  font-size: 16px; font-weight: 900;
-  letter-spacing: 1px;
-  color: rgba(255,255,255,0.5);
-  text-transform: uppercase;
-}
-
-.cover-logo-tagline {
-  font-family: var(--font-code);
-  font-size: 7px; font-weight: 700;
-  color: rgba(255,255,255,0.35);
-  text-transform: uppercase;
-  letter-spacing: 2px;
-}
-
-/* ================================================================
-   CONTENT PAGES — Wrapped in .page containers
-   ================================================================ */
-body {
-  font-family: var(--font-body);
-  background-color: #e8edf0;
-  color: var(--text-primary);
-  line-height: 1.6;
-  -webkit-font-smoothing: antialiased;
+  padding: 40px 20px;
 }
 
 .page {
-  width: 210mm;
-  min-height: 297mm;
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
   background-color: var(--bg-primary);
-  border: 1px solid #d0d8dc;
+  border: none;
+  border-bottom: 1px solid rgba(10,143,136,0.1);
   position: relative;
   overflow: hidden;
-  padding: 50px 48px;
-  page-break-before: always;
-  page-break-inside: avoid;
+  padding: 40px 24px;
 }
-.page:first-of-type {
-  page-break-before: auto;
-}
-
-.bg-grid {
-  position: absolute; top: 0; left: 0; right: 0; bottom: 0;
-  background-image:
-    linear-gradient(rgba(10,143,136,0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(10,143,136,0.03) 1px, transparent 1px);
-  background-size: 30px 30px;
-  pointer-events: none; z-index: 1;
-}
-
-.ambient-glow {
-  position: absolute; width: 450px; height: 450px;
-  background: radial-gradient(circle, rgba(10,143,136,0.05) 0%, transparent 70%);
-  top: -120px; right: -120px;
-  pointer-events: none; z-index: 1;
-}
-
-.ambient-glow-2 {
-  position: absolute; width: 350px; height: 350px;
-  background: radial-gradient(circle, rgba(10,143,136,0.03) 0%, transparent 70%);
-  bottom: -80px; left: -80px;
-  pointer-events: none; z-index: 1;
-}
-
-.content { position: relative; z-index: 2; }
-
-/* ================================================================
-   HEADER
-   ================================================================ */
-.special-banner {
-  display: inline-block;
-  font-family: var(--font-code);
-  font-size: 8.5px; font-weight: 700;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  color: #ffffff;
-  background: linear-gradient(135deg, var(--accent-primary), var(--accent-hover));
-  padding: 5px 14px;
-  border-radius: 20px;
-  margin-bottom: 18px;
-}
-
-.header {
-  display: flex; justify-content: space-between; align-items: flex-end;
-  padding-bottom: 20px; margin-bottom: 26px;
-  border-bottom: 1px solid rgba(10,143,136,0.2);
-}
-
-.header-left {
-  display: flex; flex-direction: column; align-items: flex-start;
-}
-
-.newsletter-title {
-  font-family: var(--font-title); font-weight: 900; font-size: 24px;
-  text-transform: uppercase; letter-spacing: -0.3px;
-  line-height: 1.1; margin: 0; padding: 0;
-}
-
-.newsletter-title span {
-  background: linear-gradient(90deg, var(--text-primary) 25%, var(--accent-hover) 100%);
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-.newsletter-subtitle {
-  font-size: 9.5px; color: var(--text-secondary);
-  margin-top: 2px; font-weight: 400;
-}
-
-.header-separator {
-  width: 1px; height: 32px;
-  background: rgba(10,143,136,0.25);
-}
-
-.header-right {
-  display: flex; align-items: center; gap: 14px;
-}
-
-.header-metadata-box {
-  font-family: var(--font-code); font-size: 9px;
-  color: var(--text-secondary);
-  display: flex; flex-direction: column; gap: 3px;
-  text-align: right; align-items: flex-end;
-}
-
-.meta-row { display: flex; gap: 5px; }
-.meta-label { color: var(--text-secondary); }
-.meta-value { color: var(--accent-primary); font-weight: 700; }
-
-.iaf-logo-container {
-  display: flex; flex-direction: column;
-  align-items: flex-start; justify-content: center;
-  line-height: 1.0;
-}
-
-.iaf-logo-acronym {
-  font-family: var(--font-title); font-size: 17px; font-weight: 900;
-  letter-spacing: 0.5px; text-transform: uppercase;
-  color: var(--text-primary); margin-bottom: 2px;
-}
-
-.iaf-logo-tagline {
-  font-family: var(--font-code); font-size: 6.5px; font-weight: 700;
-  color: var(--accent-primary); text-transform: uppercase;
-  letter-spacing: 1.8px; white-space: nowrap;
-}
-
-/* ================================================================
-   SECTION TITLES
-   ================================================================ */
-.section {
-  margin-bottom: 32px;
-  page-break-inside: avoid;
-}
-
-.section-title {
-  font-family: var(--font-title); font-weight: 700; font-size: 17px;
-  color: var(--accent-primary); margin-bottom: 14px;
-  display: flex; align-items: center; gap: 10px;
-  text-transform: uppercase; letter-spacing: 1px;
-  page-break-after: avoid;
-}
-
-.section-title span {
-  background: var(--bg-primary); padding-right: 8px;
-  position: relative; z-index: 2;
-  display: inline-flex; align-items: center; gap: 7px;
-}
-
-.title-icon {
-  width: 15px; height: 15px;
-  flex-shrink: 0;
-}
-
-.section-title .line {
-  flex-grow: 1; height: 1px;
-  background: linear-gradient(90deg, rgba(10,143,136,0.3), transparent);
-}
-
-/* ================================================================
-   EDITORIAL — Spectral font, dropcap, pullquotes
-   ================================================================ */
-.editorial-section {
-  margin-bottom: 0;
-}
-
-.editorial-text {
-  font-family: var(--font-editorial);
-  font-size: 15.5px;
-  line-height: 1.75;
-  color: #1f2a30;
-}
-
-.editorial-text p {
-  margin-bottom: 14px;
-  text-indent: 1.3em;
-}
-
-.editorial-text p.no-indent {
-  text-indent: 0;
-}
-
-.editorial-text .dropcap::first-letter {
-  font-family: var(--font-title);
-  font-size: 4.2em;
-  font-weight: 900;
-  float: left;
-  line-height: 0.8;
-  margin-right: 11px;
-  margin-top: 5px;
-  color: var(--accent-primary);
-}
-
-.editorial-text strong {
-  color: var(--accent-primary);
-  font-weight: 700;
-}
-
-.editorial-text em {
-  font-style: italic;
-  color: #3a5555;
-}
-
-.editorial-pullquote {
-  font-family: var(--font-editorial);
-  font-size: 20px;
-  font-weight: 600;
-  font-style: italic;
-  color: var(--accent-primary);
-  line-height: 1.45;
-  padding: 16px 22px;
-  margin: 18px 0 20px;
-  border-left: 3px solid var(--accent-hover);
-  background: rgba(10,143,136,0.03);
-  border-radius: 0 10px 10px 0;
-  text-indent: 0;
-  page-break-inside: avoid;
-}
-
-.editorial-pullquote .attribution {
-  font-family: var(--font-body);
-  font-size: 10px;
-  font-weight: 400;
-  font-style: normal;
-  color: var(--text-secondary);
-  display: block;
-  margin-top: 7px;
-}
-
-/* ================================================================
-   STAT ROW
-   ================================================================ */
-.stat-row {
-  display: flex; gap: 12px;
-  margin: 20px 0;
-  text-indent: 0;
-  page-break-inside: avoid;
-}
-
-.stat-item {
-  flex: 1; min-width: 0;
-  text-align: center;
-  padding: 15px 8px;
-  background: var(--bg-secondary);
-  border: 1px solid var(--border-color);
-  border-radius: var(--border-radius-lg);
-}
-
-.stat-number {
-  font-family: var(--font-title);
-  font-weight: 900;
-  font-size: 32px;
-  color: var(--accent-primary);
-  line-height: 1;
-  margin-bottom: 3px;
-}
-
-.stat-label {
-  font-family: var(--font-code);
-  font-size: 7.5px;
-  font-weight: 700;
-  color: var(--text-secondary);
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  line-height: 1.3;
-}
-
-/* ================================================================
-   FEAT CARDS
-   ================================================================ */
-.feat-grid {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.feat-card {
-  background: var(--bg-secondary);
-  border: 1px solid var(--border-color);
-  border-radius: var(--border-radius-lg);
-  padding: 18px 22px;
-  page-break-inside: avoid;
-}
-
-.feat-card-title {
-  font-family: var(--font-title);
-  font-weight: 700;
-  font-size: 15px;
-  color: var(--text-primary);
-  margin-bottom: 6px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.feat-card-title .feat-icon {
-  width: 20px; height: 20px;
-  flex-shrink: 0;
-  color: var(--accent-hover);
-  stroke-width: 2.2;
-}
-
-.feat-card-body {
-  font-size: 13.5px;
-  color: #3a454d;
-  line-height: 1.65;
-}
-
-.feat-card-body strong {
-  color: var(--accent-primary);
-  font-weight: 700;
-}
-
-.feat-card-body em {
-  color: #4a6a6a;
-  font-style: italic;
-}
-
-/* Two column for smaller feats */
-.two-col {
-  display: flex; gap: 12px;
-}
-
-.two-col > * {
-  flex: 1; min-width: 0;
-}
-
-/* ================================================================
-   BENCHMARK TABLE
-   ================================================================ */
-.bench-table-wrap {
-  overflow-x: auto;
-  margin: 14px 0;
-}
-
-.bench-table {
-  width: 100%;
-  border-collapse: collapse;
-  font-family: var(--font-code);
-  font-size: 10px;
-}
-
-.bench-table thead th {
-  background: var(--accent-primary);
-  color: #ffffff;
-  padding: 7px 8px;
-  text-align: left;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.4px;
-  white-space: nowrap;
-}
-
-.bench-table thead th:first-child {
-  border-radius: 8px 0 0 0;
-}
-
-.bench-table thead th:last-child {
-  border-radius: 0 8px 0 0;
-}
-
-.bench-table tbody td {
-  padding: 6px 8px;
-  border-bottom: 1px solid rgba(10,143,136,0.08);
-  color: #2d363d;
-}
-
-.bench-table tbody tr:nth-child(even) td {
-  background: rgba(10,143,136,0.02);
-}
-
-.bench-table .best {
-  color: var(--accent-hover);
-  font-weight: 700;
-}
-
-.bench-table .delta-pos {
-  color: var(--accent-hover);
-  font-weight: 700;
-}
-
-/* ================================================================
-   CALLOUT BOX
-   ================================================================ */
-.callout-box {
-  background: rgba(10,143,136,0.04);
-  border: 1px solid rgba(10,143,136,0.15);
-  border-left: 3px solid var(--accent-hover);
-  border-radius: 0 10px 10px 0;
-  padding: 16px 20px;
-  margin: 18px 0;
-  font-size: 13.5px;
-  line-height: 1.65;
-  color: #2d363d;
-  page-break-inside: avoid;
-}
-
-.callout-box strong {
-  color: var(--accent-primary);
-}
-
-.callout-box .callout-title {
-  font-family: var(--font-title);
-  font-weight: 700;
-  font-size: 11px;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  color: var(--accent-hover);
-  margin-bottom: 5px;
-}
-
-/* ================================================================
-   IMPACT CARDS
-   ================================================================ */
-.impact-card {
-  background: var(--bg-secondary);
-  border: 1px solid var(--border-color);
-  border-left: 3px solid var(--accent-hover);
-  border-radius: 0 var(--border-radius-lg) var(--border-radius-lg) 0;
-  padding: 16px 20px;
-  margin-bottom: 10px;
-  page-break-inside: avoid;
-}
-
-.impact-card h4 {
-  font-family: var(--font-title);
-  font-weight: 700;
-  font-size: 14px;
-  color: var(--text-primary);
-  margin-bottom: 5px;
-}
-
-.impact-card p {
-  font-size: 13px;
-  color: #3a454d;
-  line-height: 1.65;
-}
-
-.impact-tag {
-  font-family: var(--font-code);
-  font-size: 7.5px;
-  font-weight: 700;
-  padding: 2px 7px;
-  border-radius: 4px;
-  text-transform: uppercase;
-  display: inline-block;
-  margin-bottom: 5px;
-  letter-spacing: 0.5px;
-}
-
-.tag-business {
-  color: var(--accent-terracotta);
-  background: rgba(199,91,62,0.06);
-  border: 1px solid rgba(199,91,62,0.15);
-}
-
-.tag-science {
-  color: var(--accent-sage);
-  background: rgba(95,122,107,0.06);
-  border: 1px solid rgba(95,122,107,0.15);
-}
-
-.tag-security {
-  color: var(--accent-amber);
-  background: rgba(184,134,11,0.06);
-  border: 1px solid rgba(184,134,11,0.15);
-}
-
-.tag-frontier {
-  background: rgba(10,143,136,0.06);
-  color: var(--accent-primary);
-  border: 1px solid rgba(10,143,136,0.15);
-}
-
-/* ================================================================
-   TIMELINE
-   ================================================================ */
-.timeline {
-  position: relative;
-  padding-left: 22px;
-  margin: 14px 0;
-  page-break-inside: avoid;
-}
-
-.timeline::before {
-  content: '';
-  position: absolute;
-  left: 5px;
-  top: 0;
-  bottom: 0;
-  width: 2px;
-  background: linear-gradient(180deg, var(--accent-primary), var(--accent-hover), rgba(10,143,136,0.1));
-  border-radius: 1px;
-}
-
-.timeline-item {
-  position: relative;
-  margin-bottom: 12px;
-  padding-left: 10px;
-}
-
-.timeline-item::before {
-  content: '';
-  position: absolute;
-  left: -21px;
-  top: 3px;
-  width: 9px; height: 9px;
-  border-radius: 50%;
-  background: var(--accent-hover);
-  border: 2px solid #ffffff;
-  box-shadow: 0 0 0 1px rgba(10,143,136,0.2);
-}
-
-.timeline-date {
-  font-family: var(--font-code);
-  font-size: 8.5px;
-  font-weight: 700;
-  color: var(--accent-primary);
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-}
-
-.timeline-text {
-  font-size: 13px;
-  color: #3a454d;
-  line-height: 1.5;
-  margin-top: 1px;
-}
-
-.timeline-text strong {
-  color: var(--accent-primary);
-  font-weight: 700;
-}
-
-
-/* Source links */
-.sources-block {
-  margin-top: 12px;
-  padding-top: 10px;
-  border-top: 1px solid rgba(10,143,136,0.12);
-  font-family: var(--font-code);
-  font-size: 8.5px;
-  color: var(--text-secondary);
-  line-height: 1.6;
-}
-.sources-block a {
-  color: var(--accent-primary);
-  text-decoration: none;
-  border-bottom: 1px dashed rgba(10,143,136,0.2);
-}
-.sources-block a:hover { color: var(--accent-hover); }
-.sources-block strong { color: var(--accent-primary); font-weight: 700; }
-
-/* ================================================================
-   FOOTER
-   ================================================================ */
-.footer {
-  margin-top: 36px;
-  padding-top: 16px;
-  border-top: 1px solid rgba(10,143,136,0.2);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-family: var(--font-code);
-  font-size: 8px;
-  color: #7a8a92;
-}
-
-.footer-left {
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-}
-
-.footer-center {
-  text-align: center;
-  line-height: 1.4;
-}
-
-.footer-right {
-  color: var(--accent-primary);
-}
-
-/* ================================================================
-   MOBILE RESPONSIVE — Overrides for direct HTML viewing
-   ================================================================ */
-@media screen and (max-width: 768px) {
-  .cover-page {
-    width: 100vw !important; height: 100vh !important;
-    min-height: 100vh !important;
-  }
-  .cover-title { font-size: 26px !important; }
-  .cover-subtitle { font-size: 14px !important; }
-  .cover-badge { font-size: 9px !important; padding: 6px 14px !important; }
-  .cover-meta { font-size: 8px !important; }
-  .cover-content { padding: 24px 20px !important; }
-  .cover-logo { bottom: 16px !important; right: 16px !important; }
-  .cover-logo-acronym { font-size: 13px !important; }
-  .cover-logo-tagline { font-size: 6px !important; }
 
+/* Responsive overrides */
+@media (min-width: 768px) {
   .page {
-    width: 100% !important; min-height: auto !important;
-    padding: 28px 18px !important; page-break-after: auto !important;
+    padding: 50px 48px;
+    border: 1px solid #d0d8dc;
+    border-radius: 20px;
+    margin: 0 auto 30px;
+    box-shadow: 0 2px 16px rgba(0,0,0,0.04);
+    page-break-after: auto !important;
+    page-break-before: auto !important;
+    page-break-inside: auto !important;
   }
-
-  body { padding: 0 !important; }
-
-  .newsletter-title { font-size: 20px !important; }
-  .newsletter-subtitle { font-size: 8.5px !important; }
-
-  .editorial-text { font-size: 14px !important; line-height: 1.7 !important; }
-  .editorial-text .dropcap::first-letter { font-size: 3.2em !important; }
-  .editorial-pullquote { font-size: 16px !important; padding: 12px 14px !important; }
-
-  .stat-row { flex-wrap: wrap; gap: 6px; }
-  .stat-item { flex: 1 1 calc(50% - 6px); min-width: 100px; padding: 12px 6px !important; }
-  .stat-number { font-size: 22px !important; }
-  .stat-label { font-size: 7.5px !important; }
-
-  .feat-card { padding: 12px 14px !important; }
-  .feat-card-title { font-size: 13px !important; }
-  .feat-card-body { font-size: 12px !important; }
-
-  .two-col { flex-direction: column; gap: 8px; }
-
-  .bench-table { font-size: 7.5px !important; }
-  .bench-table-wrap { margin: 8px -18px; width: calc(100% + 36px); }
-  .bench-table thead th { padding: 5px 6px !important; }
-  .bench-table tbody td { padding: 4px 6px !important; }
-
-  .header { flex-direction: column; align-items: flex-start; gap: 8px; }
-  .header-right { flex-direction: column; align-items: flex-start; gap: 6px; }
-  .header-metadata-box { text-align: left; align-items: flex-start; font-size: 8px !important; }
-  .header-separator { display: none; }
-
-  .footer { flex-direction: column; gap: 4px; text-align: center; font-size: 7.5px !important; }
-  .section-title { font-size: 14px !important; }
-  .title-icon { width: 14px !important; height: 14px !important; }
-  .impact-card { padding: 12px 14px !important; }
-  .impact-card h4 { font-size: 12px !important; }
-  .impact-card p { font-size: 11.5px !important; }
-  .callout-box { padding: 12px 14px !important; font-size: 12px !important; }
-  .special-banner { font-size: 8px !important; letter-spacing: 2px !important; padding: 4px 10px !important; }
-  .timeline { padding-left: 16px; }
-  .timeline-item { padding-left: 6px; }
-  .timeline-item::before { left: -19px; width: 7px; height: 7px; }
-  .timeline::before { left: 3px; }
-  .timeline-text { font-size: 11px !important; }
-  .timeline-date { font-size: 7.5px !important; }
-  .feat-icon { width: 16px !important; height: 16px !important; }
-
-  .cover-svg-curve { opacity: 0.06 !important; }
+  .cover-page {
+    border-radius: 0;
+  }
 }
 
-</style>
-</head>
-<body>
-
-<!-- =============================================================
-     COVER PAGE
-     ============================================================= -->
-<div class="cover-page">
-  <div class="cover-grid"></div>
-  <div class="cover-glow-top"></div>
-  <div class="cover-glow-bottom"></div>
-
-  <svg class="cover-svg-curve" viewBox="0 0 1000 1000" preserveAspectRatio="none">
-    <path d="M0,300 C250,100 500,600 750,400 S1000,200 1000,350 L1000,1000 L0,1000 Z" fill="rgba(255,255,255,0.03)"/>
-    <circle cx="850" cy="150" r="180" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
-    <circle cx="850" cy="150" r="280" fill="none" stroke="rgba(255,255,255,0.03)" stroke-width="1"/>
-    <circle cx="200" cy="800" r="120" fill="none" stroke="rgba(255,255,255,0.04)" stroke-width="0.8"/>
-  </svg>
-
-  <div class="cover-content">
-    <div class="cover-badge">✦ Edição Extraordinária</div>
-    <h1 class="cover-title">
-      O Dia em que a<br>
-      <span class="accent-word">Mythos</span> Virou<br>
-      Coisa de Todo Dia
-    </h1>
-    <p class="cover-subtitle">
-      Claude Fable 5 e Mythos 5 redefinem o que significa "capaz"<br>
-      e inauguram um novo capítulo da inteligência artificial.
-    </p>
-    <div class="cover-divider"></div>
-    <div class="cover-meta">
-      <span>09 · Junho · 2026</span>
-      <span>✦</span>
-      <span>IAF — IA que Funciona</span>
-    </div>
-  </div>
-
-  <div class="cover-logo">
-    <span class="cover-logo-acronym">IAF</span>
-    <span class="cover-logo-tagline">IA que Funciona</span>
-  </div>
-</div>
-
-<!-- =============================================================
-     PAGE 1: HEADER + EDITORIAL (START)
-     ============================================================= -->
-<div class="page">
-  <div class="bg-grid"></div>
-  <div class="ambient-glow"></div>
-  <div class="content">
-
-    <span class="special-banner">✦ Edição Extraordinária</span>
-
-    <header class="header">
-      <div class="header-left">
-        <h1 class="newsletter-title"><span>Manhã Aumentada</span></h1>
-        <span class="newsletter-subtitle">A dose diária de conhecimento do profissional aumentado por IA</span>
-      </div>
-      <div class="header-right">
-        <div class="header-metadata-box">
-          <div class="meta-row"><span class="meta-label">Edição Especial</span></div>
-          <div class="meta-row"><span class="meta-label">Data:</span> <span class="meta-value">09/06/2026</span></div>
-          <div class="meta-row"><span class="meta-label">Tema:</span> <span class="meta-value">Fable 5 · Mythos 5</span></div>
-        </div>
-        <div class="header-separator"></div>
-        <div class="iaf-logo-container">
-          <span class="iaf-logo-acronym">IAF</span>
-          <span class="iaf-logo-tagline">IA que Funciona</span>
-        </div>
-      </div>
-    </header>
-
-    <!-- EDITORIAL -->
-    <div class="editorial-section">
-      <div class="editorial-text">
-
-        <p class="no-indent dropcap"><strong>Nove de junho de 2026.</strong> Não é uma data que vai aparecer em livros de história amanhã — mas, daqui a alguns anos, quando historiadores da tecnologia olharem para trás, vão encontrar dois marcos que se cruzam neste dia exato. O primeiro é técnico: a Anthropic, empresa fundada por dissidentes da OpenAI que sempre se definiu pela contenção, colocou nas mãos do público um modelo que, há dois meses, era oficialmente considerado <em>perigoso demais para ser liberado</em>. O segundo é simbólico e, de certa forma, mais perturbador: a empresa fez isso simultaneamente com a abertura de seu prospecto de abertura de capital — US$ 965 bilhões em valor de mercado, US$ 47 bilhões de receita anualizada —, provando que, na indústria de fronteira, responsabilidade e capitalização não são forças opostas. São, cada vez mais, a mesma coisa.</p>
-
-        <p>O lançamento do <strong>Claude Fable 5</strong> (para o público) e do <strong>Claude Mythos 5</strong> (para parceiros de confiança do Project Glasswing) não é apenas mais uma nota de lançamento em um calendário já entupido de anúncios de IA. É o primeiro momento, desde que a corrida realmente começou, em que uma empresa chega a um limite tão claro que precisa criar <em>duas versões</em> do mesmo modelo: uma que pode tudo e fica com os especialistas, e outra que pode quase tudo e vai para o resto do mundo. Fable e Mythos compartilham o mesmo cérebro. A diferença é um conjunto de classificadores de segurança — barreiras de programa que, quando detectam um comando que pode levar a um ataque cibernético ou à síntese de uma toxina, redirecionam a resposta para o modelo anterior, o Opus 4.8. O nome "Fable" (do latim <em>fabula</em>, "aquilo que é contado") não é acidental: é uma declaração de que a versão pública conta uma história <em>segura</em>, adequada para consumo geral, enquanto a Mythos é a narrativa completa.</p>
-
-        <div class="editorial-pullquote">
-          "Fable 5 é o primeiro modelo na história da indústria que precisa de uma versão reduzida de si mesmo para poder existir socialmente."
-          <span class="attribution">— A constatação incômoda sobre o estado da arte em IA</span>
-        </div>
-
-        <p><strong>O salto é real, e não é incremental.</strong> Quando a Anthropic lançou o Mythos Preview em abril, os comparativos já tinham deixado claro que algo fundamental havia mudado: 93,9% no SWE-bench Verified, 97,6% no USAMO 2026, 94,5% no GPQA Diamond — números que não apenas batiam qualquer concorrente, mas em alguns casos <em>dobravam</em> o desempenho do Opus 4.6. A diferença agora é que esses números não estão mais trancados em um programa de acesso restrito. Estão disponíveis na API por US$ 10 por milhão de tokens de entrada e US$ 50 por milhão de tokens de saída — menos da metade do preço do Mythos Preview — e, até 22 de junho, sem custo adicional para assinantes dos planos Pro, Max, Team e Enterprise. A mensagem é clara: <em>usem, explorem, quebrem</em>. A janela de gratuidade não é generosidade; é coleta de dados de segurança em escala, com retenção obrigatória de 30 dias para todo o tráfego.</p>
-
-      </div>
-    </div>
-
-  </div>
-</div>
-
-<!-- =============================================================
-     PAGE 2: EDITORIAL (CONTINUED) + STATS
-     ============================================================= -->
-<div class="page">
-  <div class="bg-grid"></div>
-  <div class="ambient-glow-2"></div>
-  <div class="content">
-
-    <div class="editorial-section">
-      <div class="editorial-text">
-
-        <p class="no-indent"><strong>O caso de uso que mais impressiona, e que deve mobilizar a atenção de qualquer diretor de tecnologia, é o da Stripe.</strong> Em testes internos, o Fable 5 executou uma migração de código em um monólito Ruby de 50 milhões de linhas — algo que uma equipe inteira levaria mais de dois meses para fazer manualmente — em <em>um único dia</em>. "Comprimiu meses de engenharia em dias", disse a Stripe. O que isso significa, em termos práticos, é que a barreira entre "ter uma ideia" e "ter um sistema funcionando" encolheu dramaticamente. Não para tarefas de brinquedo, não para protótipos: para operações reais em bases de código reais, com riscos reais de regressão.</p>
-
-        <p>O Cursor, ambiente de desenvolvimento que já usa o modelo em acesso antecipado, resumiu o momento com a precisão de quem está na linha de frente: <em>"Fable 5 abriu uma classe de problemas de horizonte longo que estavam fora do alcance dos modelos anteriores."</em> Traduzindo: antes, você precisava de engenheiros seniores para planejar, dividir em subtarefas, supervisionar a execução e revisar o resultado. Agora, você entrega o problema e volta no dia seguinte.</p>
-
-        <div class="stat-row">
-          <div class="stat-item">
-            <div class="stat-number">50M</div>
-            <div class="stat-label">Linhas de código<br>migradas em 1 dia</div>
-          </div>
-          <div class="stat-item">
-            <div class="stat-number">93,9%</div>
-            <div class="stat-label">SWE-bench<br>Verified</div>
-          </div>
-          <div class="stat-item">
-            <div class="stat-number">US$ 965B</div>
-            <div class="stat-label">Valor de mercado<br>no IPO Anthropic</div>
-          </div>
-          <div class="stat-item">
-            <div class="stat-number">10×</div>
-            <div class="stat-label">Aceleração no design<br>de proteínas</div>
-          </div>
-        </div>
-
-        <p><strong>A dimensão científica do lançamento é igualmente impressionante, embora menos comentada.</strong> O Mythos 5, na versão sem restrições para laboratórios parceiros, produziu <em>9 candidatos fortes a fármacos a partir de 14 alvos proteicos</em> — incluindo alvos em pontos de controle imunológicos, neurodegeneração e doenças musculares. Sem assistência humana. Escolhendo os sítios de ligação, executando ferramentas de design de proteínas, recuperando-se de falhas. Em testes cegos, cientistas preferiram as hipóteses geradas pelo Mythos 5 às do Opus 4.8 em cerca de 80% dos casos. Uma hipótese sobre <em>E. coli</em> foi corroborada de forma independente por um laboratório poucas semanas depois.</p>
-
-        <p>Há também um dado de genômica que vale por si só: o Mythos 5 conduziu pesquisa autônoma abrangendo <strong>138 espécies animais</strong> (dados de célula única) e, em um dos achados, projetou e treinou um modelo de aprendizado de máquina 100 vezes menor que um publicado na <em>Science</em> — e o superou. Os resultados serão publicados nos próximos meses. Este é o tipo de feito que deveria estar na capa de todos os jornais. Em vez disso, está enterrado na seção de "pesquisa" do anúncio de lançamento.</p>
-
-        <p><strong>Mas a história mais importante talvez não seja o que o modelo faz. É o que ele <em>não pode</em> fazer.</strong> E é aqui que a edição de hoje dobra a aposta narrativa.</p>
-
-      </div>
-    </div>
-
-  </div>
-</div>
-
-<!-- =============================================================
-     PAGE 3: EDITORIAL (END) — SEGURANÇA, POLÍTICA, CONCLUSÃO
-     ============================================================= -->
-<div class="page">
-  <div class="bg-grid"></div>
-  <div class="ambient-glow"></div>
-  <div class="content">
-
-    <div class="editorial-section">
-      <div class="editorial-text">
-
-        <p class="no-indent">A segurança do Fable 5 é implementada por três classificadores de IA — cibersegurança, biologia e química, e destilação (proteção contra engenharia reversa do modelo) — que operam em tempo real. Quando um comando é sinalizado, a resposta vem do Claude Opus 4.8, não do Fable 5. A Anthropic realizou mais de 1.000 horas de teste de invasão externo sem encontrar um único desbloqueio universal. O Instituto de Segurança de IA do Reino Unido fez progresso em direção a um desbloqueio universal dentro de uma janela breve, mas não o completou. Trinta técnicas conhecidas de desbloqueio foram testadas — zero eficazes.</p>
-
-        <p>O paradoxo, claro, é que <strong>95% das sessões do Fable 5 nunca acionam nenhum desses classificadores</strong>. Para o desenvolvedor comum — e para 99% dos leitores desta publicação — o modelo simplesmente funciona, sem restrições perceptíveis. A segurança, para o usuário médio, é invisível. Para o ator malicioso, é intransponível. Esse é o desenho ideal de contenção.</p>
-
-        <div class="editorial-pullquote">
-          "A segurança do Fable 5 é invisível para 95% dos usuários e intransponível para os 5% restantes. O problema é que os 5% certos ainda podem estar do lado de fora."
-          <span class="attribution">— O dilema da contenção seletiva em modelos de fronteira</span>
-        </div>
-
-        <p><strong>A pergunta que fica pairando, no entanto, é política e existencial.</strong> Se a Anthropic — que se constituiu em torno da segurança como valor fundador — chegou a este ponto e decidiu que a versão pública precisa de algemas, o que isso diz sobre as empresas que não têm esse compromisso? Ou, pior, sobre as que têm compromisso apenas com o lucro? Em abril, o Mythos Preview já havia encontrado <em>milhares</em> de vulnerabilidades inéditas em todos os principais sistemas operacionais e navegadores — incluindo uma falha de 27 anos no OpenBSD que sobreviveu a décadas de testes automatizados. Agora, a versão quase completa desse poder está nas mãos de parceiros de infraestrutura crítica em 15 países, via Project Glasswing. A pergunta não é se essa capacidade vai vazar — é <strong>o que acontece quando vazar</strong>.</p>
-
-        <p>Este lançamento também não acontece no vácuo competitivo. A Anthropic protocolou seu pedido de abertura de capital na SEC em 1º de junho — mesma semana em que Elon Musk iniciou a apresentação do IPO da SpaceX (valor alvo de US$ 2 trilhões) e a OpenAI se prepara para protocolar o seu. É a maior onda de abertura de capital da história da tecnologia, e o fio condutor entre as três empresas é o mesmo: inteligência artificial de fronteira. O que o mercado está comprando não é um produto, mas uma aposta em <em>capacidade futura</em>. O Fable 5 é a materialização dessa aposta — a primeira vez que o "futuro" pode ser testado por qualquer desenvolvedor com uma chave de API.</p>
-
-        <p><strong>E o futuro, pelo menos por ora, tem preço e limite.</strong> O custo por token do Fable 5 é o dobro do Opus 4.8 (US$ 10/US$ 50 contra US$ 5/US$ 25 por milhão de tokens). A justificativa é que, para tarefas complexas, o Fable 5 faz em uma chamada o que o Opus faria em várias — e a economia líquida ainda favorece o modelo mais caro. Nove de junho de 2026, então, é o dia em que a IA deixou de ser um exercício de possibilidade e se tornou um exercício de <em>escolha</em>. Escolha entre versões. Escolha entre segurança e capacidade. Escolha entre pagar mais por autonomia ou pagar menos por supervisão. A Mythos abriu uma porta que não pode mais ser fechada. O Fable 5 é o corredor pelo qual vamos passar — e a pergunta que fica, para cada um de nós, é: <strong>para onde estamos indo?</strong></p>
-
-        <div class="sources-block" style="margin-top:10px;"><strong>Fontes do editorial:</strong> <a href="https://www.anthropic.com/news/claude-fable-5-mythos-5">Anthropic Blog</a> · <a href="https://techcrunch.com/2026/06/09/anthropic-released-claude-fable-5-its-most-powerful-model-publicly-days-after-warning-ai-is-getting-too-dangerous/">TechCrunch</a> · <a href="https://www.wired.com/story/anthropic-releases-claude-fable-5-mythos-5/">WIRED</a> · <a href="https://www.cnbc.com/2026/06/09/anthropic-mythos-claude-fable-5.html">CNBC</a> · <a href="https://www.reuters.com/technology/anthropic-rolls-out-public-version-mythos-without-cybersecurity-capability-2026-06-09/">Reuters</a> · <a href="https://www.cnbc.com/2026/06/01/anthropic-ipo-s1-prospectus.html">CNBC (IPO)</a> · <a href="https://thehackernews.com/2026/04/anthropics-claude-mythos-finds.html">The Hacker News</a></div>
-
-      </div>
-    </div>
-
-    <footer class="footer">
-      <div class="footer-left"><span>IAF — IA que Funciona</span></div>
-      <div class="footer-center">Edição Extraordinária · 09/06/2026</div>
-      <div class="footer-right">Gerado por Hermes Agent</div>
-    </footer>
-
-  </div>
-</div>
-
-<!-- =============================================================
-     PAGE 4: FEATS — SOFTWARE ENGINEERING + BENCHMARKS
-     ============================================================= -->
-<div class="page">
-  <div class="bg-grid"></div>
-  <div class="ambient-glow-2"></div>
-  <div class="content">
-
-    <span class="special-banner">✦ Catálogo de Proezas</span>
-
-    <header style="display:flex; justify-content:space-between; align-items:flex-end; padding-bottom:14px; margin-bottom:22px; border-bottom:1px solid rgba(10,143,136,0.2);">
-      <div>
-        <h1 style="font-family:var(--font-title); font-weight:900; font-size:18px; letter-spacing:-0.3px; line-height:1.1;">
-          <span style="background:linear-gradient(90deg,var(--text-primary)25%,var(--accent-hover)100%); background-clip:text; -webkit-background-clip:text; -webkit-text-fill-color:transparent;">Engenharia &amp; Comparativos</span>
-        </h1>
-        <span style="font-size:9px; color:var(--text-secondary);">O que Fable 5 e Mythos 5 realmente sabem fazer</span>
-      </div>
-      <span style="font-family:var(--font-code); font-size:8px; color:var(--accent-primary); font-weight:700;">Parte 1/3</span>
-    </header>
-
-    <!-- Engenharia de Software -->
-    <div class="section">
-      <div class="section-title">
-        <span>
-          <svg class="title-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
-          Engenharia de Software
-        </span>
-        <div class="line"></div>
-      </div>
-
-      <div class="feat-grid">
-
-        <div class="feat-card">
-          <div class="feat-card-title">
-            <svg class="feat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg>
-            Stripe: 50 milhões de linhas em um dia
-          </div>
-          <div class="feat-card-body">
-            Em testes internos, o Fable 5 executou uma <strong>migração de código completa</strong> no monólito Ruby de 50 milhões de linhas da Stripe — um projeto que uma equipe de engenheiros levaria mais de dois meses para concluir manualmente. O modelo compreendeu a arquitetura, planejou a migração em múltiplos arquivos interdependentes e executou tudo de forma autônoma, com validação do próprio trabalho. A Stripe descreveu o resultado como <strong>"meses de engenharia comprimidos em dias"</strong>.
-          </div>
-          <div class="sources-block"><strong>Fontes:</strong> <a href="https://www.anthropic.com/news/claude-fable-5-mythos-5">Anthropic — Anúncio oficial</a> · Stripe internal testing, Jun 2026</div>
-        </div>
-
-        <div class="feat-card">
-          <div class="feat-card-title">
-            <svg class="feat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-            Cursor: uma nova classe de problemas
-          </div>
-          <div class="feat-card-body">
-            A equipe do Cursor (ambiente de desenvolvimento com IA) relatou que o Fable 5 <strong>"abriu uma classe de problemas de horizonte longo que estavam fora do alcance de modelos anteriores"</strong>. Aplicações que antes exigiam cem comandos e supervisão constante agora são resolvidas em uma única interação. Um parceiro inicial resumiu: <strong>"Aplicativos que exigiam cem comandos há um ano, o Fable 5 resolve de uma só vez."</strong>
-          </div>
-          <div class="sources-block"><strong>Fontes:</strong> <a href="https://www.cosmicjs.com/blog/claude-fable-5-what-it-is-what-it-means-for-developers">Cosmic JS — Guia para desenvolvedores</a> · Cursor early-access partner</div>
-        </div>
-
-        <div class="feat-card">
-          <div class="feat-card-title">
-            <svg class="feat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
-            Mozilla: 271 falhas encontradas no Firefox
-          </div>
-          <div class="feat-card-body">
-            Durante o período de acesso ao Mythos Preview, a <strong>Mozilla</strong> utilizou o modelo para encontrar <strong>271 vulnerabilidades no Firefox</strong> — um volume de descoberta que teria exigido uma equipe de segurança dedicada por meses. Este caso ilustra o potencial defensivo da tecnologia: encontrar falhas antes que agentes maliciosos o façam.
-          </div>
-          <div class="sources-block"><strong>Fontes:</strong> <a href="https://www.wired.com/story/anthropic-releases-claude-fable-5-mythos-5/">WIRED — Cobertura Fable 5 / Mythos 5</a> · Mozilla case study</div>
-        </div>
-
-        <div class="feat-card">
-          <div class="feat-card-title">
-            <svg class="feat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
-            Autonomia agentiva: refatoração sem supervisão
-          </div>
-          <div class="feat-card-body">
-            A Rakuten destacou a capacidade do Fable 5 de <strong>refletir e validar o próprio trabalho</strong>: <em>"No nível máximo de esforço, o Fable reflete e valida seu próprio resultado... Para nós, é isso que torna operações altamente autônomas possíveis — o pensamento extra se paga."</em> A Base44 relatou que o modelo é excepcional em <strong>"criar aplicativos completos de uma só vez"</strong> e possui <strong>"excelente chamada de ferramentas"</strong>.
-          </div>
-          <div class="sources-block"><strong>Fontes:</strong> <a href="https://techcrunch.com/2026/06/09/anthropic-released-claude-fable-5-its-most-powerful-model-publicly-days-after-warning-ai-is-getting-too-dangerous/">TechCrunch — Lançamento do Fable 5</a> · Rakuten e Base44 early-access</div>
-        </div>
-
-      </div>
-    </div>
-
-    <!-- Benchmark Table -->
-    <div class="section">
-      <div class="section-title">
-        <span>
-          <svg class="title-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>
-          Dominância nos Comparativos
-        </span>
-        <div class="line"></div>
-      </div>
-
-      <p style="font-size:10.5px; color:var(--text-secondary); margin-bottom:10px; line-height:1.5;">
-        O Mythos Preview estabeleceu o novo estado da arte em <strong>todos</strong> os comparativos compartilhados com concorrentes. Dados do preview (abril/2026); Fable 5 e Mythos 5 são ainda mais capazes.
-      </p>
-
-      <div class="bench-table-wrap">
-        <table class="bench-table">
-          <thead>
-            <tr>
-              <th>Comparativo</th>
-              <th>Mythos Pr.</th>
-              <th>Opus 4.6</th>
-              <th>GPT-5.4</th>
-              <th>Gemini 3.1</th>
-              <th>Δ vs Opus</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>SWE-bench Verified</td>
-              <td class="best">93,9%</td><td>80,8%</td><td>—</td><td>80,6%</td>
-              <td class="delta-pos">+13,1</td>
-            </tr>
-            <tr>
-              <td>SWE-bench Pro</td>
-              <td class="best">77,8%</td><td>53,4%</td><td>57,7%</td><td>54,2%</td>
-              <td class="delta-pos">+24,4</td>
-            </tr>
-            <tr>
-              <td>SWE-bench Multilingual</td>
-              <td class="best">87,3%</td><td>77,8%</td><td>—</td><td>—</td>
-              <td class="delta-pos">+9,5</td>
-            </tr>
-            <tr>
-              <td>SWE-bench Multimodal</td>
-              <td class="best">59,0%</td><td>27,1%</td><td>—</td><td>—</td>
-              <td class="delta-pos">+31,9</td>
-            </tr>
-            <tr>
-              <td>Terminal-Bench 2.0 (4h)</td>
-              <td class="best">92,1%</td><td>—</td><td>75,3%</td><td>—</td>
-              <td class="delta-pos">+16,8*</td>
-            </tr>
-            <tr>
-              <td>USAMO 2026</td>
-              <td class="best">97,6%</td><td>42,3%</td><td>95,2%</td><td>74,4%</td>
-              <td class="delta-pos">+55,3</td>
-            </tr>
-            <tr>
-              <td>GPQA Diamond</td>
-              <td class="best">94,5%</td><td>91,3%</td><td>92,8%</td><td>94,3%</td>
-              <td class="delta-pos">+3,2</td>
-            </tr>
-            <tr>
-              <td>HLE (com ferramentas)</td>
-              <td class="best">64,7%</td><td>53,1%</td><td>52,1%</td><td>51,4%</td>
-              <td class="delta-pos">+11,6</td>
-            </tr>
-            <tr>
-              <td>GraphWalks BFS 256K–1M</td>
-              <td class="best">80,0%</td><td>38,7%</td><td>21,4%</td><td>—</td>
-              <td class="delta-pos">+41,3</td>
-            </tr>
-            <tr>
-              <td>OSWorld (área de trabalho)</td>
-              <td class="best">79,6%</td><td>72,7%</td><td>75,0%</td><td>—</td>
-              <td class="delta-pos">+6,9</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-
-      <div class="callout-box">
-        <div class="callout-title">
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#06b8a0" stroke-width="2.2" style="vertical-align:-2px;margin-right:4px;"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
-          O maior salto individual já registrado
-        </div>
-        O <strong>USAMO 2026</strong> (Olimpíada de Matemática dos EUA) viu o maior salto já registrado em um comparativo de IA: de 42,3% (Opus 4.6) para <strong>97,6%</strong> — um aumento de 55,3 pontos percentuais. No <strong>SWE-bench Pro</strong> (nível mais difícil, projetado para resistir a manipulação do comparativo), o Mythos lidera sobre a GPT-5.4 por 20,1 pontos. No <strong>GraphWalks</strong>, que testa raciocínio contextual em janelas longas (256K a 1M tokens), o Mythos quadruplica a GPT-5.4. Esses não são ganhos marginais: são degraus qualitativos.
-        <div class="sources-block" style="margin-top:10px;"><strong>Fontes:</strong> <a href="https://www.anthropic.com/news/claude-fable-5-mythos-5">Anthropic Blog</a> · <a href="https://www.nxcode.io/resources/news/claude-mythos-benchmarks-93-swe-bench-every-record-broken-2026">NxCode — Análise de benchmarks</a> · <a href="https://benchlm.ai/benchmarks/sweVerified">BenchLM Leaderboard</a></div>
-      </div>
-
-    </div>
-
-    <footer class="footer">
-      <div class="footer-left"><span>IAF</span></div>
-      <div class="footer-center">Fontes: Anthropic System Card · NxCode · BenchLM</div>
-      <div class="footer-right">Parte 1/3</div>
-    </footer>
-
-  </div>
-</div>
-
-<!-- =============================================================
-     PAGE 5: FEATS — CIÊNCIA, VISÃO, AUTONOMIA
-     ============================================================= -->
-<div class="page">
-  <div class="bg-grid"></div>
-  <div class="ambient-glow"></div>
-  <div class="content">
-
-    <span class="special-banner">✦ Catálogo de Proezas</span>
-
-    <header style="display:flex; justify-content:space-between; align-items:flex-end; padding-bottom:14px; margin-bottom:22px; border-bottom:1px solid rgba(10,143,136,0.2);">
-      <div>
-        <h1 style="font-family:var(--font-title); font-weight:900; font-size:18px; letter-spacing:-0.3px; line-height:1.1;">
-          <span style="background:linear-gradient(90deg,var(--text-primary)25%,var(--accent-hover)100%); background-clip:text; -webkit-background-clip:text; -webkit-text-fill-color:transparent;">Ciência, Visão &amp; Autonomia</span>
-        </h1>
-        <span style="font-size:9px; color:var(--text-secondary);">Da descoberta de fármacos ao Pokémon FireRed</span>
-      </div>
-      <span style="font-family:var(--font-code); font-size:8px; color:var(--accent-primary); font-weight:700;">Parte 2/3</span>
-    </header>
-
-    <!-- Drug Design -->
-    <div class="section">
-      <div class="section-title">
-        <span>
-          <svg class="title-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-          Ciência da Vida &amp; Descoberta de Fármacos
-        </span>
-        <div class="line"></div>
-      </div>
-
-      <div class="feat-grid">
-
-        <div class="feat-card">
-          <div class="feat-card-title">
-            <svg class="feat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
-            Design de proteínas 10× mais rápido
-          </div>
-          <div class="feat-card-body">
-            Com o <strong>Mythos 5</strong>, a equipe interna de design de proteínas da Anthropic acelerou o processo de descoberta de fármacos em <strong>cerca de 10 vezes</strong>. O modelo operou <strong>sem assistência humana</strong>: escolheu os sítios de ligação, executou ferramentas de bioinformática e se recuperou de falhas de forma autônoma. Resultado: <strong>9 de 14 alvos proteicos</strong> retornaram candidatos a fármacos fortes — incluindo alvos em pontos de controle imunológicos, neurodegeneração e doenças musculares.
-          </div>
-          <div class="sources-block"><strong>Fontes:</strong> <a href="https://www.anthropic.com/news/claude-fable-5-mythos-5">Anthropic — Drug design evaluation</a> · Mythos 5 protein research</div>
-        </div>
-
-        <div class="feat-card">
-          <div class="feat-card-title">
-            <svg class="feat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
-            Hipóteses preferidas 80% das vezes por cientistas
-          </div>
-          <div class="feat-card-body">
-            Em comparações cegas, as hipóteses geradas pelo Mythos 5 foram preferidas <strong>~80% das vezes</strong> em relação às geradas por modelos da classe Opus. Uma hipótese sobre <em>E. coli</em> foi <strong>corroborada de forma independente</strong> por um laboratório acadêmico — validando não apenas a capacidade preditiva do modelo, mas sua utilidade como ferramenta real de descoberta científica. Publicação no biorXiv, março de 2026.
-          </div>
-          <div class="sources-block"><strong>Fontes:</strong> <a href="https://www.anthropic.com/news/claude-fable-5-mythos-5">Anthropic — Biology evaluation</a> · <a href="https://www.biorxiv.org/content/10.64898/2026.03.12.711259v1">biorXiv — Estudo independente</a></div>
-        </div>
-
-        <div class="feat-card">
-          <div class="feat-card-title">
-            <svg class="feat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/></svg>
-            Genômica em 138 espécies animais
-          </div>
-          <div class="feat-card-body">
-            O Mythos 5 conduziu pesquisa autônoma de genômica de célula única abrangendo <strong>138 espécies animais</strong>. Em uma das descobertas, projetou e treinou um modelo de aprendizado de máquina <strong>100 vezes menor</strong> que um modelo publicado na revista <em>Science</em> — e o <strong>superou em desempenho</strong>. Os resultados serão publicados nos próximos meses. Este feito isoladamente já justificaria um artigo de primeiro autor.
-          </div>
-          <div class="sources-block"><strong>Fontes:</strong> <a href="https://www.anthropic.com/news/claude-fable-5-mythos-5">Anthropic — Genomics research</a> · 138 species, single-cell data</div>
-        </div>
-
-      </div>
-    </div>
-
-    <!-- Vision & Creative -->
-    <div class="section">
-      <div class="section-title">
-        <span>
-          <svg class="title-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
-          Visão, Criatividade &amp; Autonomia
-        </span>
-        <div class="line"></div>
-      </div>
-
-      <div class="feat-grid">
-
-        <div class="feat-card">
-          <div class="feat-card-title">
-            <svg class="feat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="2.18"/><circle cx="12" cy="12" r="4"/></svg>
-            Novo estado da arte em visão computacional
-          </div>
-          <div class="feat-card-body">
-            O Fable 5 consegue extrair números precisos de figuras científicas complexas e, num feito que impressionou até os engenheiros da Anthropic, <strong>reconstruiu o código-fonte completo de uma aplicação web a partir apenas de capturas de tela</strong> — sem inspeção de estrutura da página, sem acesso ao código, apenas observando os pixels. Isso abre caminho para geração de front-end a partir de protótipos visuais, auditoria de interfaces e extração de dados de gráficos e diagramas.
-          </div>
-          <div class="sources-block"><strong>Fontes:</strong> <a href="https://www.anthropic.com/news/claude-fable-5-mythos-5">Anthropic — Vision capabilities</a> · New SOTA computer vision</div>
-        </div>
-
-        <div class="feat-card">
-          <div class="feat-card-title">
-            <svg class="feat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M12 12h.01M6 12h.01M18 12h.01"/></svg>
-            Pokémon FireRed zerado apenas com visão
-          </div>
-          <div class="feat-card-body">
-            O Fable 5 zerou <strong>Pokémon FireRed</strong> usando apenas visão — sem acesso à memória do jogo, sem ajuda de emulador, apenas observando a tela. Modelos anteriores precisavam de suporte complexo. O Fable 5 fez com um conjunto mínimo de ferramentas. No processo, encontrou um item (HM03 Surf) e ignorou outro (HM04 Strength) — comportamento que mostra tanto autonomia quanto a imprevisibilidade que persiste em agentes visuais.
-          </div>
-          <div class="sources-block"><strong>Fontes:</strong> <a href="https://www.anthropic.com/news/claude-fable-5-mythos-5">Anthropic — Vision-only gameplay</a> · <a href="https://www.lesswrong.com/posts/sehJYg5Yny9fvpbpt/a-year-late-claude-finally-beats-pokemon">LessWrong — Pokémon analysis</a></div>
-        </div>
-
-        <div class="two-col">
-          <div class="feat-card">
-            <div class="feat-card-title">
-              <svg class="feat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="2"/><path d="M12 2v4M12 18v4M2 12h4M18 12h4"/></svg>
-              Simulação de sistema solar
-            </div>
-            <div class="feat-card-body" style="font-size:11.5px;">
-              Construiu simulação física de <strong>sistema solar</strong> com previsão de eclipses — modelo gravitacional completo e predição de eventos astronômicos.
-            </div>
-          </div>
-          <div class="feat-card">
-            <div class="feat-card-title">
-              <svg class="feat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18"/><line x1="3" y1="9" x2="21" y2="9"/></svg>
-              Fábrica autônoma no Factorio
-            </div>
-            <div class="feat-card-body" style="font-size:11.5px;">
-              Jogou <strong>Factorio</strong> de forma totalmente autônoma — projetando fábricas, gerenciando logística e otimizando cadeias de produção.
-            </div>
-          </div>
-        </div>
-
-        <div class="two-col">
-          <div class="feat-card">
-            <div class="feat-card-title">
-              <svg class="feat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
-              Modelo CAD 3D para impressão
-            </div>
-            <div class="feat-card-body" style="font-size:11.5px;">
-              Criou um <strong>modelo CAD 3D</strong> usando um editor no navegador que ele próprio construiu — cadeia completa da ferramenta ao artefato físico.
-            </div>
-          </div>
-          <div class="feat-card">
-            <div class="feat-card-title">
-              <svg class="feat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
-              Simulação de fluidos + música
-            </div>
-            <div class="feat-card-body" style="font-size:11.5px;">
-              Escreveu <strong>simulação de fluidos</strong> sincronizada com um <strong>remix de música clássica eletrônica</strong> composto do zero pelo modelo.
-            </div>
-          </div>
-        </div>
-
-        <div class="feat-card">
-          <div class="feat-card-title">
-            <svg class="feat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
-            Slay the Spire: memória persistente 3× melhor
-          </div>
-          <div class="feat-card-body">
-            No comparativo <strong>Slay the Spire</strong> — jogo de cartas que exige planejamento estratégico e memória de longo prazo — o Fable 5 com memória persistente <strong>melhorou o desempenho em 3× mais</strong> que o Opus 4.8. O Fable 5 chegou ao ato final <strong>3 vezes mais</strong> frequentemente. Implicações diretas para agentes autônomos que precisam manter contexto por horas: refatorações multi-arquivo, análises longas e fluxos agentivos.
-          </div>
-          <div class="sources-block"><strong>Fontes:</strong> <a href="https://www.anthropic.com/news/claude-fable-5-mythos-5">Anthropic — Memory evaluation</a> · Slay the Spire benchmark</div>
-        </div>
-
-      </div>
-    </div>
-
-    <footer class="footer">
-      <div class="footer-left"><span>IAF</span></div>
-      <div class="footer-center">Fontes: Anthropic Blog · System Card · Cosmic JS</div>
-      <div class="footer-right">Parte 2/3</div>
-    </footer>
-
-  </div>
-</div>
-
-<!-- =============================================================
-     PAGE 6: SEGURANÇA, TIMELINE, IMPACTO NO MERCADO
-     ============================================================= -->
-<div class="page">
-  <div class="bg-grid"></div>
-  <div class="ambient-glow-2"></div>
-  <div class="content">
-
-    <span class="special-banner">✦ Catálogo de Proezas</span>
-
-    <header style="display:flex; justify-content:space-between; align-items:flex-end; padding-bottom:14px; margin-bottom:22px; border-bottom:1px solid rgba(10,143,136,0.2);">
-      <div>
-        <h1 style="font-family:var(--font-title); font-weight:900; font-size:18px; letter-spacing:-0.3px; line-height:1.1;">
-          <span style="background:linear-gradient(90deg,var(--text-primary)25%,var(--accent-hover)100%); background-clip:text; -webkit-background-clip:text; -webkit-text-fill-color:transparent;">Segurança, Indústria &amp; Mercado</span>
-        </h1>
-        <span style="font-size:9px; color:var(--text-secondary);">O poder que justifica as algemas — e o impacto global</span>
-      </div>
-      <span style="font-family:var(--font-code); font-size:8px; color:var(--accent-primary); font-weight:700;">Parte 3/3</span>
-    </header>
-
-    <!-- Cibersegurança -->
-    <div class="section">
-      <div class="section-title">
-        <span>
-          <svg class="title-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-          Cibersegurança: O Poder que Justifica as Algemas
-        </span>
-        <div class="line"></div>
-      </div>
-
-      <div class="feat-grid">
-
-        <div class="feat-card">
-          <div class="feat-card-title">
-            <svg class="feat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
-            Uma falha de 27 anos no OpenBSD
-          </div>
-          <div class="feat-card-body">
-            O Mythos Preview encontrou uma vulnerabilidade no kernel do <strong>OpenBSD</strong> que <strong>sobreviveu 27 anos</strong> — desde o início do projeto — a todas as auditorias manuais, testes automatizados e varredores de vulnerabilidade. Um <em>overflow</em> de inteiro com sinal no TCP SACK que permitia negação de serviço remota. A descoberta foi publicada como peça central do Project Glasswing. A mensagem: se o sistema mais obcecado com segurança tem uma falha de 27 anos, <strong>todo programa tem falhas que você não conhece</strong>.
-          </div>
-          <div class="sources-block"><strong>Fontes:</strong> <a href="https://thehackernews.com/2026/04/anthropics-claude-mythos-finds.html">The Hacker News — Zero-days do Mythos</a> · <a href="https://www.sovereignmagazine.com/article/claude-mythos-27-year-bug-cost">Sovereign Magazine — Bug de 27 anos</a></div>
-        </div>
-
-        <div class="feat-card">
-          <div class="feat-card-title">
-            <svg class="feat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
-            Milhares de vulnerabilidades inéditas em semanas
-          </div>
-          <div class="feat-card-body">
-            Em <strong>semanas</strong> de operação autônoma, o Mythos Preview descobriu <strong>milhares de vulnerabilidades inéditas de alta severidade</strong> em todos os principais sistemas — Windows, Linux, macOS, iOS, Android, Chrome, Firefox, Safari. Incluiu: falha de <strong>17 anos no FreeBSD</strong> (execução remota de código não autenticada no NFS), vulnerabilidade de <strong>16 anos no FFmpeg</strong> (5 milhões de testes de <em>fuzzing</em> não a encontraram) e múltiplas escalações de privilégio no kernel Linux. O Mythos gerou <strong>181 explorações para o Firefox</strong> — contra 2 do Opus 4.6.
-          </div>
-          <div class="sources-block"><strong>Fontes:</strong> <a href="https://thehackernews.com/2026/04/anthropics-claude-mythos-finds.html">The Hacker News — Milhares de zero-days</a> · <a href="https://www.pcworld.com/article/3109427/anthropics-new-ai-found-thousands-of-zero-day-flaws-on-its-own.html">PC World — Cobertura</a></div>
-        </div>
-
-        <div class="feat-card">
-          <div class="feat-card-title">
-            <svg class="feat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-            Arquitetura de segurança do Fable 5
-          </div>
-          <div class="feat-card-body">
-            Três classificadores de segurança em tempo real: <strong>(1) Cibersegurança</strong> — bloqueia exploração e hacking agentivo ofensivo. <strong>(2) Biologia e Química</strong> — previne síntese de toxinas e agentes biológicos. <strong>(3) Destilação</strong> — impede engenharia reversa do modelo. Em <strong>mais de 95% das sessões</strong> não há ativação de classificadores. Em <strong>mais de 1.000 horas de teste de invasão</strong> externo, nenhum desbloqueio universal foi encontrado.
-          </div>
-          <div class="sources-block"><strong>Fontes:</strong> <a href="https://www.anthropic.com/news/claude-fable-5-mythos-5">Anthropic — Safety architecture</a> · <a href="https://anthropic.com/claude-fable-5-mythos-5-system-card">System Card oficial</a></div>
-        </div>
-
-      </div>
-    </div>
-
-    <!-- Timeline -->
-    <div class="section">
-      <div class="section-title">
-        <span>
-          <svg class="title-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-          Linha do Tempo: Da Mythos ao IPO
-        </span>
-        <div class="line"></div>
-      </div>
-
-      <div class="timeline">
-        <div class="timeline-item">
-          <div class="timeline-date">Fevereiro 2026</div>
-          <div class="timeline-text">Mythos Preview descobre <strong>milhares de vulnerabilidades inéditas</strong>. Falha de 27 anos no OpenBSD. Anthropic decide <strong>não liberar ao público</strong>.</div>
-        </div>
-        <div class="timeline-item">
-          <div class="timeline-date">Março 2026</div>
-          <div class="timeline-text">Detalhes do Mythos vazam via <strong>exposição acidental de dados</strong> (Fortune). Codenome interno: "Capybara". Anthropic confirma nova classe de modelo.</div>
-        </div>
-        <div class="timeline-item">
-          <div class="timeline-date">Abril 2026</div>
-          <div class="timeline-text">Anúncio oficial do <strong>Mythos Preview</strong> via Project Glasswing. 93,9% SWE-bench. 97,6% USAMO. Acesso para 12 parceiros (Apple, Google, Microsoft, Amazon, Mozilla, Stripe e outros).</div>
-        </div>
-        <div class="timeline-item">
-          <div class="timeline-date">Maio 2026</div>
-          <div class="timeline-text">Mythos expandido para <strong>centenas de organizações</strong> de infraestrutura crítica em 15 países. SpaceX protocola IPO (alvo US$ 2 tri).</div>
-        </div>
-        <div class="timeline-item">
-          <div class="timeline-date">1 Junho 2026</div>
-          <div class="timeline-text"><strong>Anthropic protocola pedido confidencial de IPO</strong>. Valor de mercado: US$ 965 bi. Receita anualizada: US$ 47 bi.</div>
-        </div>
-        <div class="timeline-item">
-          <div class="timeline-date">✦ 9 Junho 2026</div>
-          <div class="timeline-text"><strong>Lançamento do Fable 5 e Mythos 5.</strong> Fable 5 disponível na API. Sem custo adicional até 22/06. Retenção de dados de 30 dias. <strong>O dia em que a Mythos virou coisa de todo dia.</strong></div>
-        </div>
-      </div>
-    </div>
-
-    <footer class="footer">
-      <div class="footer-left"><span>IAF</span></div>
-      <div class="footer-center">Fontes: Anthropic · WIRED · TechCrunch · CNBC · Reuters</div>
-      <div class="footer-right">Parte 3/3</div>
-    </footer>
-
-  </div>
-</div>
-
-<!-- =============================================================
-     PAGE 7: IMPACTO NA INDÚSTRIA E MERCADO (FINAL)
-     ============================================================= -->
-<div class="page">
-  <div class="bg-grid"></div>
-  <div class="ambient-glow"></div>
-  <div class="content">
-
-    <div class="section">
-      <div class="section-title">
-        <span>
-          <svg class="title-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
-          Impacto na Indústria e no Mercado
-        </span>
-        <div class="line"></div>
-      </div>
-
-      <div class="impact-card">
-        <span class="impact-tag tag-business">IPO</span>
-        <h4>A maior onda de aberturas de capital da história da tecnologia</h4>
-        <p>Anthropic (US$ 965 bi), SpaceX (US$ 2 tri alvo), OpenAI (a protocolar) — três empresas de inteligência artificial de fronteira abrindo capital <strong>simultaneamente</strong>. O Fable 5 é a primeira manifestação pública da capacidade que sustenta esse valor de mercado. O mercado está comprando <strong>capacidade futura</strong>, e o Fable 5 é a primeira vez que essa capacidade pode ser testada por qualquer desenvolvedor.</p>
-      </div>
-
-      <div class="impact-card">
-        <span class="impact-tag tag-business">Precificação</span>
-        <h4>O dilema do custo por token</h4>
-        <p>Fable 5 custa <strong>US$ 10/1M entrada, US$ 50/1M saída</strong> — o dobro do Opus 4.8. A justificativa (autonomia reduz chamadas) é defendida pela Rakuten: <em>"o pensamento extra se paga."</em> A janela sem custo adicional até 22/06 funciona como avaliação em escala — e como coleta de dados de segurança.</p>
-      </div>
-
-      <div class="impact-card">
-        <span class="impact-tag tag-business">Disponibilidade</span>
-        <h4>Parceiros de nuvem e ecossistema</h4>
-        <p>Fable 5 disponível imediatamente em <strong>Amazon Bedrock</strong> e <strong>Microsoft Foundry</strong>. A Microsoft posicionou o modelo como "potencializando a próxima era de agentes autônomos". A Anthropic também anunciou suporte via API direta e planos de consumo Enterprise.</p>
-      </div>
-
-      <div class="impact-card">
-        <span class="impact-tag tag-science">Colaboração</span>
-        <h4>Project Glasswing: defesa em escala global</h4>
-        <p>Consórcio de segurança cibernética reunindo 12 das maiores empresas de tecnologia, organizações de infraestrutura crítica de 15 países e agências dos EUA e Reino Unido. Objetivo: usar a capacidade ofensiva do Mythos para <strong>encontrar e corrigir vulnerabilidades antes que agentes maliciosos possam explorá-las</strong>.</p>
-      </div>
-
-      <div class="impact-card">
-        <span class="impact-tag tag-frontier">Regulação</span>
-        <h4>O precedente regulatório</h4>
-        <p>A decisão de lançar <strong>duas versões</strong> do mesmo modelo — uma segura (Fable) e uma completa (Mythos) — estabelece um precedente que reguladores do mundo inteiro estão observando. Se o modelo de "classificadores + contingência" se provar eficaz, pode se tornar o <strong>padrão regulatório</strong> para liberação de modelos de fronteira.</p>
-      </div>
-
-      <div class="callout-box">
-        <div class="callout-title">
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#06b8a0" stroke-width="2.2" style="vertical-align:-2px;margin-right:4px;"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-          O quadro completo
-        </div>
-        O lançamento do Fable 5 e Mythos 5 não é apenas um evento técnico. É a primeira vez que uma empresa de IA de fronteira:<br><br>
-        <strong>1.</strong> Admite publicamente que seu modelo é perigoso demais para liberação irrestrita → e libera mesmo assim (com contenção).<br>
-        <strong>2.</strong> Cria <strong>duas marcas</strong> para o mesmo modelo — separando capacidade de segurança por nome.<br>
-        <strong>3.</strong> Submete o modelo mais poderoso já criado a <strong>retenção obrigatória de dados</strong> de 30 dias como condição de uso.<br>
-        <strong>4.</strong> Faz tudo isso na <strong>véspera do maior IPO da história da IA</strong>.<br><br>
-        Quatro fatores que fazem de 9 de junho de 2026 uma data que merece <strong>sua própria edição extraordinária</strong>.
-        <div class="sources-block" style="margin-top:10px;"><strong>Fontes principais desta edição:</strong> <a href="https://www.anthropic.com/news/claude-fable-5-mythos-5">Anthropic</a> · <a href="https://techcrunch.com/2026/06/09/anthropic-released-claude-fable-5-its-most-powerful-model-publicly-days-after-warning-ai-is-getting-too-dangerous/">TechCrunch</a> · <a href="https://www.wired.com/story/anthropic-releases-claude-fable-5-mythos-5/">WIRED</a> · <a href="https://www.cnbc.com/2026/06/09/anthropic-mythos-claude-fable-5.html">CNBC</a> · <a href="https://www.reuters.com/technology/anthropic-rolls-out-public-version-mythos-without-cybersecurity-capability-2026-06-09/">Reuters</a> · <a href="https://www.cnbc.com/2026/06/01/anthropic-ipo-s1-prospectus.html">CNBC (IPO)</a> · <a href="https://www.nxcode.io/resources/news/claude-mythos-benchmarks-93-swe-bench-every-record-broken-2026">NxCode</a> · <a href="https://thehackernews.com/2026/04/anthropics-claude-mythos-finds.html">The Hacker News</a> · <a href="https://www.cosmicjs.com/blog/claude-fable-5-what-it-is-what-it-means-for-developers">Cosmic JS</a></div>
-      </div>
-
-    </div>
-
-    <footer class="footer">
-      <div class="footer-left"><span>IAF — IA que Funciona</span></div>
-      <div class="footer-center">Fontes: Anthropic · WIRED · TechCrunch · CNBC · Reuters · SC Media · Hacker News</div>
-      <div class="footer-right">Gerado por Hermes Agent</div>
-    </footer>
-
-  </div>
-</div>
-
-</body>
-</html>
+/* Ensure no page-break rules leak */
+.page, .cover-page, .section, .feat-card, .impact-card, .callout-box,
+.editorial-pullquote, .stat-row, .timeline {
+  page-break-after: auto !important;
+  page-break-before: auto !important;
+  page-break-inside: auto !important;
+}
+
+/* Larger fonts for mobile readability */
+.editorial-text {
+  font-size: 16px !important;
+  line-height: 1.8 !important;
+}
+.editorial-pullquote {
+  font-size: 20px !important;
+  padding: 18px 20px !important;
+}
+.feat-card-body {
+  font-size: 15px !important;
+  line-height: 1.7 !important;
+}
+.impact-card p {
+  font-size: 14px !important;
+}
+.timeline-text {
+  font-size: 14px !important;
+}
+.callout-box {
+  font-size: 14px !important;
+}
+.stat-number {
+  font-size: 34px !important;
+}
+.section-title {
+  font-size: 18px !important;
+}
+.feat-card-title {
+  font-size: 16px !important;
+}
+
+/* Cover responsive sizing */
+.cover-title {
+  font-size: clamp(24px, 8vw, 46px) !important;
+}
+.cover-subtitle {
+  font-size: clamp(14px, 3vw, 18px) !important;
+}
+.cover-badge {
+  font-size: 10px !important;
+}
+.cover-content {
+  padding: 24px 16px !important;
+  max-width: 650px;
+}
+
+/* Two-col cards stack on small screens */
+@media (max-width: 600px) {
+  .two-col {
+    flex-direction: column;
+    gap: 8px;
+  }
+  .stat-row {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .stat-item {
+    flex: 1 1 calc(50% - 8px);
+    min-width: 120px;
+  }
+  .bench-table {
+    font-size: 8px !important;
+  }
+  .bench-table-wrap {
+    margin: 8px -16px;
+    width: calc(100% + 32px);
+  }
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  .header-right {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+  .header-metadata-box {
+    text-align: left;
+    align-items: flex-start;
+  }
+  .header-separator {
+    display: none;
+  }
+  .page {
+    padding: 28px 16px;
+  }
+}
+
+/* Remove page-break from cover */
+.cover-page {
+  page-break-after: auto !important;
+}
+
+/* Smooth scroll behavior */
+html {
+  scroll-behavior: smooth;
+}
+.bg-grid {
+216|  position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+217|  background-image:
+218|    linear-gradient(rgba(10,143,136,0.03) 1px, transparent 1px),
+219|    linear-gradient(90deg, rgba(10,143,136,0.03) 1px, transparent 1px);
+220|  background-size: 30px 30px;
+221|  pointer-events: none; z-index: 1;
+222|}
+223|
+224|.ambient-glow {
+225|  position: absolute; width: 450px; height: 450px;
+226|  background: radial-gradient(circle, rgba(10,143,136,0.05) 0%, transparent 70%);
+227|  top: -120px; right: -120px;
+228|  pointer-events: none; z-index: 1;
+229|}
+230|
+231|.ambient-glow-2 {
+232|  position: absolute; width: 350px; height: 350px;
+233|  background: radial-gradient(circle, rgba(10,143,136,0.03) 0%, transparent 70%);
+234|  bottom: -80px; left: -80px;
+235|  pointer-events: none; z-index: 1;
+236|}
+237|
+238|.content { position: relative; z-index: 2; }
+239|
+240|/* ================================================================
+241|   HEADER
+242|   ================================================================ */
+243|.special-banner {
+244|  display: inline-block;
+245|  font-family: var(--font-code);
+246|  font-size: 8.5px; font-weight: 700;
+247|  letter-spacing: 3px;
+248|  text-transform: uppercase;
+249|  color: #ffffff;
+250|  background: linear-gradient(135deg, var(--accent-primary), var(--accent-hover));
+251|  padding: 5px 14px;
+252|  border-radius: 20px;
+253|  margin-bottom: 18px;
+254|}
+255|
+256|.header {
+257|  display: flex; justify-content: space-between; align-items: flex-end;
+258|  padding-bottom: 20px; margin-bottom: 26px;
+259|  border-bottom: 1px solid rgba(10,143,136,0.2);
+260|}
+261|
+262|.header-left {
+263|  display: flex; flex-direction: column; align-items: flex-start;
+264|}
+265|
+266|.newsletter-title {
+267|  font-family: var(--font-title); font-weight: 900; font-size: 24px;
+268|  text-transform: uppercase; letter-spacing: -0.3px;
+269|  line-height: 1.1; margin: 0; padding: 0;
+270|}
+271|
+272|.newsletter-title span {
+273|  background: linear-gradient(90deg, var(--text-primary) 25%, var(--accent-hover) 100%);
+274|  background-clip: text;
+275|  -webkit-background-clip: text;
+276|  -webkit-text-fill-color: transparent;
+277|}
+278|
+279|.newsletter-subtitle {
+280|  font-size: 9.5px; color: var(--text-secondary);
+281|  margin-top: 2px; font-weight: 400;
+282|}
+283|
+284|.header-separator {
+285|  width: 1px; height: 32px;
+286|  background: rgba(10,143,136,0.25);
+287|}
+288|
+289|.header-right {
+290|  display: flex; align-items: center; gap: 14px;
+291|}
+292|
+293|.header-metadata-box {
+294|  font-family: var(--font-code); font-size: 9px;
+295|  color: var(--text-secondary);
+296|  display: flex; flex-direction: column; gap: 3px;
+297|  text-align: right; align-items: flex-end;
+298|}
+299|
+300|.meta-row { display: flex; gap: 5px; }
+301|.meta-label { color: var(--text-secondary); }
+302|.meta-value { color: var(--accent-primary); font-weight: 700; }
+303|
+304|.iaf-logo-container {
+305|  display: flex; flex-direction: column;
+306|  align-items: flex-start; justify-content: center;
+307|  line-height: 1.0;
+308|}
+309|
+310|.iaf-logo-acronym {
+311|  font-family: var(--font-title); font-size: 17px; font-weight: 900;
+312|  letter-spacing: 0.5px; text-transform: uppercase;
+313|  color: var(--text-primary); margin-bottom: 2px;
+314|}
+315|
+316|.iaf-logo-tagline {
+317|  font-family: var(--font-code); font-size: 6.5px; font-weight: 700;
+318|  color: var(--accent-primary); text-transform: uppercase;
+319|  letter-spacing: 1.8px; white-space: nowrap;
+320|}
+321|
+322|/* ================================================================
+323|   SECTION TITLES
+324|   ================================================================ */
+325|.section {
+326|  margin-bottom: 32px;
+327|  page-break-inside: avoid;
+328|}
+329|
+330|.section-title {
+331|  font-family: var(--font-title); font-weight: 700; font-size: 17px;
+332|  color: var(--accent-primary); margin-bottom: 14px;
+333|  display: flex; align-items: center; gap: 10px;
+334|  text-transform: uppercase; letter-spacing: 1px;
+335|  page-break-after: avoid;
+336|}
+337|
+338|.section-title span {
+339|  background: var(--bg-primary); padding-right: 8px;
+340|  position: relative; z-index: 2;
+341|  display: inline-flex; align-items: center; gap: 7px;
+342|}
+343|
+344|.title-icon {
+345|  width: 15px; height: 15px;
+346|  flex-shrink: 0;
+347|}
+348|
+349|.section-title .line {
+350|  flex-grow: 1; height: 1px;
+351|  background: linear-gradient(90deg, rgba(10,143,136,0.3), transparent);
+352|}
+353|
+354|/* ================================================================
+355|   EDITORIAL — Spectral font, dropcap, pullquotes
+356|   ================================================================ */
+357|.editorial-section {
+358|  margin-bottom: 0;
+359|}
+360|
+361|.editorial-text {
+362|  font-family: var(--font-editorial);
+363|  font-size: 15.5px;
+364|  line-height: 1.75;
+365|  color: #1f2a30;
+366|}
+367|
+368|.editorial-text p {
+369|  margin-bottom: 14px;
+370|  text-indent: 1.3em;
+371|}
+372|
+373|.editorial-text p.no-indent {
+374|  text-indent: 0;
+375|}
+376|
+377|.editorial-text .dropcap::first-letter {
+378|  font-family: var(--font-title);
+379|  font-size: 4.2em;
+380|  font-weight: 900;
+381|  float: left;
+382|  line-height: 0.8;
+383|  margin-right: 11px;
+384|  margin-top: 5px;
+385|  color: var(--accent-primary);
+386|}
+387|
+388|.editorial-text strong {
+389|  color: var(--accent-primary);
+390|  font-weight: 700;
+391|}
+392|
+393|.editorial-text em {
+394|  font-style: italic;
+395|  color: #3a5555;
+396|}
+397|
+398|.editorial-pullquote {
+399|  font-family: var(--font-editorial);
+400|  font-size: 20px;
+401|  font-weight: 600;
+402|  font-style: italic;
+403|  color: var(--accent-primary);
+404|  line-height: 1.45;
+405|  padding: 16px 22px;
+406|  margin: 18px 0 20px;
+407|  border-left: 3px solid var(--accent-hover);
+408|  background: rgba(10,143,136,0.03);
+409|  border-radius: 0 10px 10px 0;
+410|  text-indent: 0;
+411|  page-break-inside: avoid;
+412|}
+413|
+414|.editorial-pullquote .attribution {
+415|  font-family: var(--font-body);
+416|  font-size: 10px;
+417|  font-weight: 400;
+418|  font-style: normal;
+419|  color: var(--text-secondary);
+420|  display: block;
+421|  margin-top: 7px;
+422|}
+423|
+424|/* ================================================================
+425|   STAT ROW
+426|   ================================================================ */
+427|.stat-row {
+428|  display: flex; gap: 12px;
+429|  margin: 20px 0;
+430|  text-indent: 0;
+431|  page-break-inside: avoid;
+432|}
+433|
+434|.stat-item {
+435|  flex: 1; min-width: 0;
+436|  text-align: center;
+437|  padding: 15px 8px;
+438|  background: var(--bg-secondary);
+439|  border: 1px solid var(--border-color);
+440|  border-radius: var(--border-radius-lg);
+441|}
+442|
+443|.stat-number {
+444|  font-family: var(--font-title);
+445|  font-weight: 900;
+446|  font-size: 32px;
+447|  color: var(--accent-primary);
+448|  line-height: 1;
+449|  margin-bottom: 3px;
+450|}
+451|
+452|.stat-label {
+453|  font-family: var(--font-code);
+454|  font-size: 7.5px;
+455|  font-weight: 700;
+456|  color: var(--text-secondary);
+457|  text-transform: uppercase;
+458|  letter-spacing: 0.5px;
+459|  line-height: 1.3;
+460|}
+461|
+462|/* ================================================================
+463|   FEAT CARDS
+464|   ================================================================ */
+465|.feat-grid {
+466|  display: flex;
+467|  flex-direction: column;
+468|  gap: 12px;
+469|}
+470|
+471|.feat-card {
+472|  background: var(--bg-secondary);
+473|  border: 1px solid var(--border-color);
+474|  border-radius: var(--border-radius-lg);
+475|  padding: 18px 22px;
+476|  page-break-inside: avoid;
+477|}
+478|
+479|.feat-card-title {
+480|  font-family: var(--font-title);
+481|  font-weight: 700;
+482|  font-size: 15px;
+483|  color: var(--text-primary);
+484|  margin-bottom: 6px;
+485|  display: flex;
+486|  align-items: center;
+487|  gap: 8px;
+488|}
+489|
+490|.feat-card-title .feat-icon {
+491|  width: 20px; height: 20px;
+492|  flex-shrink: 0;
+493|  color: var(--accent-hover);
+494|  stroke-width: 2.2;
+495|}
+496|
+497|.feat-card-body {
+498|  font-size: 13.5px;
+499|  color: #3a454d;
+500|  line-height: 1.65;
+501|501|}
+502|
+503|.feat-card-body strong {
+504|  color: var(--accent-primary);
+505|  font-weight: 700;
+506|}
+507|
+508|.feat-card-body em {
+509|  color: #4a6a6a;
+510|  font-style: italic;
+511|}
+512|
+513|/* Two column for smaller feats */
+514|.two-col {
+515|  display: flex; gap: 12px;
+516|}
+517|
+518|.two-col > * {
+519|  flex: 1; min-width: 0;
+520|}
+521|
+522|/* ================================================================
+523|   BENCHMARK TABLE
+524|   ================================================================ */
+525|.bench-table-wrap {
+526|  overflow-x: auto;
+527|  margin: 14px 0;
+528|}
+529|
+530|.bench-table {
+531|  width: 100%;
+532|  border-collapse: collapse;
+533|  font-family: var(--font-code);
+534|  font-size: 10px;
+535|}
+536|
+537|.bench-table thead th {
+538|  background: var(--accent-primary);
+539|  color: #ffffff;
+540|  padding: 7px 8px;
+541|  text-align: left;
+542|  font-weight: 700;
+543|  text-transform: uppercase;
+544|  letter-spacing: 0.4px;
+545|  white-space: nowrap;
+546|}
+547|
+548|.bench-table thead th:first-child {
+549|  border-radius: 8px 0 0 0;
+550|}
+551|
+552|.bench-table thead th:last-child {
+553|  border-radius: 0 8px 0 0;
+554|}
+555|
+556|.bench-table tbody td {
+557|  padding: 6px 8px;
+558|  border-bottom: 1px solid rgba(10,143,136,0.08);
+559|  color: #2d363d;
+560|}
+561|
+562|.bench-table tbody tr:nth-child(even) td {
+563|  background: rgba(10,143,136,0.02);
+564|}
+565|
+566|.bench-table .best {
+567|  color: var(--accent-hover);
+568|  font-weight: 700;
+569|}
+570|
+571|.bench-table .delta-pos {
+572|  color: var(--accent-hover);
+573|  font-weight: 700;
+574|}
+575|
+576|/* ================================================================
+577|   CALLOUT BOX
+578|   ================================================================ */
+579|.callout-box {
+580|  background: rgba(10,143,136,0.04);
+581|  border: 1px solid rgba(10,143,136,0.15);
+582|  border-left: 3px solid var(--accent-hover);
+583|  border-radius: 0 10px 10px 0;
+584|  padding: 16px 20px;
+585|  margin: 18px 0;
+586|  font-size: 13.5px;
+587|  line-height: 1.65;
+588|  color: #2d363d;
+589|  page-break-inside: avoid;
+590|}
+591|
+592|.callout-box strong {
+593|  color: var(--accent-primary);
+594|}
+595|
+596|.callout-box .callout-title {
+597|  font-family: var(--font-title);
+598|  font-weight: 700;
+599|  font-size: 11px;
+600|  text-transform: uppercase;
+601|  letter-spacing: 0.5px;
+602|  color: var(--accent-hover);
+603|  margin-bottom: 5px;
+604|}
+605|
+606|/* ================================================================
+607|   IMPACT CARDS
+608|   ================================================================ */
+609|.impact-card {
+610|  background: var(--bg-secondary);
+611|  border: 1px solid var(--border-color);
+612|  border-left: 3px solid var(--accent-hover);
+613|  border-radius: 0 var(--border-radius-lg) var(--border-radius-lg) 0;
+614|  padding: 16px 20px;
+615|  margin-bottom: 10px;
+616|  page-break-inside: avoid;
+617|}
+618|
+619|.impact-card h4 {
+620|  font-family: var(--font-title);
+621|  font-weight: 700;
+622|  font-size: 14px;
+623|  color: var(--text-primary);
+624|  margin-bottom: 5px;
+625|}
+626|
+627|.impact-card p {
+628|  font-size: 13px;
+629|  color: #3a454d;
+630|  line-height: 1.65;
+631|}
+632|
+633|.impact-tag {
+634|  font-family: var(--font-code);
+635|  font-size: 7.5px;
+636|  font-weight: 700;
+637|  padding: 2px 7px;
+638|  border-radius: 4px;
+639|  text-transform: uppercase;
+640|  display: inline-block;
+641|  margin-bottom: 5px;
+642|  letter-spacing: 0.5px;
+643|}
+644|
+645|.tag-business {
+646|  color: var(--accent-terracotta);
+647|  background: rgba(199,91,62,0.06);
+648|  border: 1px solid rgba(199,91,62,0.15);
+649|}
+650|
+651|.tag-science {
+652|  color: var(--accent-sage);
+653|  background: rgba(95,122,107,0.06);
+654|  border: 1px solid rgba(95,122,107,0.15);
+655|}
+656|
+657|.tag-security {
+658|  color: var(--accent-amber);
+659|  background: rgba(184,134,11,0.06);
+660|  border: 1px solid rgba(184,134,11,0.15);
+661|}
+662|
+663|.tag-frontier {
+664|  background: rgba(10,143,136,0.06);
+665|  color: var(--accent-primary);
+666|  border: 1px solid rgba(10,143,136,0.15);
+667|}
+668|
+669|/* ================================================================
+670|   TIMELINE
+671|   ================================================================ */
+672|.timeline {
+673|  position: relative;
+674|  padding-left: 22px;
+675|  margin: 14px 0;
+676|  page-break-inside: avoid;
+677|}
+678|
+679|.timeline::before {
+680|  content: '';
+681|  position: absolute;
+682|  left: 5px;
+683|  top: 0;
+684|  bottom: 0;
+685|  width: 2px;
+686|  background: linear-gradient(180deg, var(--accent-primary), var(--accent-hover), rgba(10,143,136,0.1));
+687|  border-radius: 1px;
+688|}
+689|
+690|.timeline-item {
+691|  position: relative;
+692|  margin-bottom: 12px;
+693|  padding-left: 10px;
+694|}
+695|
+696|.timeline-item::before {
+697|  content: '';
+698|  position: absolute;
+699|  left: -21px;
+700|  top: 3px;
+701|  width: 9px; height: 9px;
+702|  border-radius: 50%;
+703|  background: var(--accent-hover);
+704|  border: 2px solid #ffffff;
+705|  box-shadow: 0 0 0 1px rgba(10,143,136,0.2);
+706|}
+707|
+708|.timeline-date {
+709|  font-family: var(--font-code);
+710|  font-size: 8.5px;
+711|  font-weight: 700;
+712|  color: var(--accent-primary);
+713|  text-transform: uppercase;
+714|  letter-spacing: 0.5px;
+715|}
+716|
+717|.timeline-text {
+718|  font-size: 13px;
+719|  color: #3a454d;
+720|  line-height: 1.5;
+721|  margin-top: 1px;
+722|}
+723|
+724|.timeline-text strong {
+725|  color: var(--accent-primary);
+726|  font-weight: 700;
+727|}
+728|
+729|
+730|/* Source links */
+731|.sources-block {
+732|  margin-top: 12px;
+733|  padding-top: 10px;
+734|  border-top: 1px solid rgba(10,143,136,0.12);
+735|  font-family: var(--font-code);
+736|  font-size: 8.5px;
+737|  color: var(--text-secondary);
+738|  line-height: 1.6;
+739|}
+740|.sources-block a {
+741|  color: var(--accent-primary);
+742|  text-decoration: none;
+743|  border-bottom: 1px dashed rgba(10,143,136,0.2);
+744|}
+745|.sources-block a:hover { color: var(--accent-hover); }
+746|.sources-block strong { color: var(--accent-primary); font-weight: 700; }
+747|
+748|/* ================================================================
+749|   FOOTER
+750|   ================================================================ */
+751|.footer {
+752|  margin-top: 36px;
+753|  padding-top: 16px;
+754|  border-top: 1px solid rgba(10,143,136,0.2);
+755|  display: flex;
+756|  justify-content: space-between;
+757|  align-items: center;
+758|  font-family: var(--font-code);
+759|  font-size: 8px;
+760|  color: #7a8a92;
+761|}
+762|
+763|.footer-left {
+764|  font-weight: 700;
+765|  text-transform: uppercase;
+766|  letter-spacing: 0.5px;
+767|}
+768|
+769|.footer-center {
+770|  text-align: center;
+771|  line-height: 1.4;
+772|}
+773|
+774|.footer-right {
+775|  color: var(--accent-primary);
+776|}
+777|
+778|/* ================================================================
+779|   MOBILE RESPONSIVE — Overrides for direct HTML viewing
+780|   ================================================================ */
+781|@media screen and (max-width: 768px) {
+782|  .cover-page {
+783|    width: 100vw !important; height: 100vh !important;
+784|    min-height: 100vh !important;
+785|  }
+786|  .cover-title { font-size: 26px !important; }
+787|  .cover-subtitle { font-size: 14px !important; }
+788|  .cover-badge { font-size: 9px !important; padding: 6px 14px !important; }
+789|  .cover-meta { font-size: 8px !important; }
+790|  .cover-content { padding: 24px 20px !important; }
+791|  .cover-logo { bottom: 16px !important; right: 16px !important; }
+792|  .cover-logo-acronym { font-size: 13px !important; }
+793|  .cover-logo-tagline { font-size: 6px !important; }
+794|
+795|  .page {
+796|    width: 100% !important; min-height: auto !important;
+797|    padding: 28px 18px !important; page-break-after: auto !important;
+798|  }
+799|
+800|  body { padding: 0 !important; }
+801|
+802|  .newsletter-title { font-size: 20px !important; }
+803|  .newsletter-subtitle { font-size: 8.5px !important; }
+804|
+805|  .editorial-text { font-size: 14px !important; line-height: 1.7 !important; }
+806|  .editorial-text .dropcap::first-letter { font-size: 3.2em !important; }
+807|  .editorial-pullquote { font-size: 16px !important; padding: 12px 14px !important; }
+808|
+809|  .stat-row { flex-wrap: wrap; gap: 6px; }
+810|  .stat-item { flex: 1 1 calc(50% - 6px); min-width: 100px; padding: 12px 6px !important; }
+811|  .stat-number { font-size: 22px !important; }
+812|  .stat-label { font-size: 7.5px !important; }
+813|
+814|  .feat-card { padding: 12px 14px !important; }
+815|  .feat-card-title { font-size: 13px !important; }
+816|  .feat-card-body { font-size: 12px !important; }
+817|
+818|  .two-col { flex-direction: column; gap: 8px; }
+819|
+820|  .bench-table { font-size: 7.5px !important; }
+821|  .bench-table-wrap { margin: 8px -18px; width: calc(100% + 36px); }
+822|  .bench-table thead th { padding: 5px 6px !important; }
+823|  .bench-table tbody td { padding: 4px 6px !important; }
+824|
+825|  .header { flex-direction: column; align-items: flex-start; gap: 8px; }
+826|  .header-right { flex-direction: column; align-items: flex-start; gap: 6px; }
+827|  .header-metadata-box { text-align: left; align-items: flex-start; font-size: 8px !important; }
+828|  .header-separator { display: none; }
+829|
+830|  .footer { flex-direction: column; gap: 4px; text-align: center; font-size: 7.5px !important; }
+831|  .section-title { font-size: 14px !important; }
+832|  .title-icon { width: 14px !important; height: 14px !important; }
+833|  .impact-card { padding: 12px 14px !important; }
+834|  .impact-card h4 { font-size: 12px !important; }
+835|  .impact-card p { font-size: 11.5px !important; }
+836|  .callout-box { padding: 12px 14px !important; font-size: 12px !important; }
+837|  .special-banner { font-size: 8px !important; letter-spacing: 2px !important; padding: 4px 10px !important; }
+838|  .timeline { padding-left: 16px; }
+839|  .timeline-item { padding-left: 6px; }
+840|  .timeline-item::before { left: -19px; width: 7px; height: 7px; }
+841|  .timeline::before { left: 3px; }
+842|  .timeline-text { font-size: 11px !important; }
+843|  .timeline-date { font-size: 7.5px !important; }
+844|  .feat-icon { width: 16px !important; height: 16px !important; }
+845|
+846|  .cover-svg-curve { opacity: 0.06 !important; }
+847|}
+848|
+849|</style>
+850|</head>
+851|<body>
+852|
+853|<!-- =============================================================
+854|     COVER PAGE
+855|     ============================================================= -->
+856|<div class="cover-page">
+857|  <div class="cover-grid"></div>
+858|  <div class="cover-glow-top"></div>
+859|  <div class="cover-glow-bottom"></div>
+860|
+861|  <svg class="cover-svg-curve" viewBox="0 0 1000 1000" preserveAspectRatio="none">
+862|    <path d="M0,300 C250,100 500,600 750,400 S1000,200 1000,350 L1000,1000 L0,1000 Z" fill="rgba(255,255,255,0.03)"/>
+863|    <circle cx="850" cy="150" r="180" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+864|    <circle cx="850" cy="150" r="280" fill="none" stroke="rgba(255,255,255,0.03)" stroke-width="1"/>
+865|    <circle cx="200" cy="800" r="120" fill="none" stroke="rgba(255,255,255,0.04)" stroke-width="0.8"/>
+866|  </svg>
+867|
+868|  <div class="cover-content">
+869|    <div class="cover-badge">✦ Edição Extraordinária</div>
+870|    <h1 class="cover-title">
+871|      O Dia em que a<br>
+872|      <span class="accent-word">Mythos</span> Virou<br>
+873|      Coisa de Todo Dia
+874|    </h1>
+875|    <p class="cover-subtitle">
+876|      Claude Fable 5 e Mythos 5 redefinem o que significa "capaz"<br>
+877|      e inauguram um novo capítulo da inteligência artificial.
+878|    </p>
+879|    <div class="cover-divider"></div>
+880|    <div class="cover-meta">
+881|      <span>09 · Junho · 2026</span>
+882|      <span>✦</span>
+883|      <span>IAF — IA que Funciona</span>
+884|    </div>
+885|  </div>
+886|
+887|  <div class="cover-logo">
+888|    <span class="cover-logo-acronym">IAF</span>
+889|    <span class="cover-logo-tagline">IA que Funciona</span>
+890|  </div>
+891|</div>
+892|
+893|<!-- =============================================================
+894|     PAGE 1: HEADER + EDITORIAL (START)
+895|     ============================================================= -->
+896|<div class="page">
+897|  <div class="bg-grid"></div>
+898|  <div class="ambient-glow"></div>
+899|  <div class="content">
+900|
+901|    <span class="special-banner">✦ Edição Extraordinária</span>
+902|
+903|    <header class="header">
+904|      <div class="header-left">
+905|        <h1 class="newsletter-title"><span>Manhã Aumentada</span></h1>
+906|        <span class="newsletter-subtitle">A dose diária de conhecimento do profissional aumentado por IA</span>
+907|      </div>
+908|      <div class="header-right">
+909|        <div class="header-metadata-box">
+910|          <div class="meta-row"><span class="meta-label">Edição Especial</span></div>
+911|          <div class="meta-row"><span class="meta-label">Data:</span> <span class="meta-value">09/06/2026</span></div>
+912|          <div class="meta-row"><span class="meta-label">Tema:</span> <span class="meta-value">Fable 5 · Mythos 5</span></div>
+913|        </div>
+914|        <div class="header-separator"></div>
+915|        <div class="iaf-logo-container">
+916|          <span class="iaf-logo-acronym">IAF</span>
+917|          <span class="iaf-logo-tagline">IA que Funciona</span>
+918|        </div>
+919|      </div>
+920|    </header>
+921|
+922|    <!-- EDITORIAL -->
+923|    <div class="editorial-section">
+924|      <div class="editorial-text">
+925|
+926|        <p class="no-indent dropcap"><strong>Nove de junho de 2026.</strong> Não é uma data que vai aparecer em livros de história amanhã — mas, daqui a alguns anos, quando historiadores da tecnologia olharem para trás, vão encontrar dois marcos que se cruzam neste dia exato. O primeiro é técnico: a Anthropic, empresa fundada por dissidentes da OpenAI que sempre se definiu pela contenção, colocou nas mãos do público um modelo que, há dois meses, era oficialmente considerado <em>perigoso demais para ser liberado</em>. O segundo é simbólico e, de certa forma, mais perturbador: a empresa fez isso simultaneamente com a abertura de seu prospecto de abertura de capital — US$ 965 bilhões em valor de mercado, US$ 47 bilhões de receita anualizada —, provando que, na indústria de fronteira, responsabilidade e capitalização não são forças opostas. São, cada vez mais, a mesma coisa.</p>
+927|
+928|        <p>O lançamento do <strong>Claude Fable 5</strong> (para o público) e do <strong>Claude Mythos 5</strong> (para parceiros de confiança do Project Glasswing) não é apenas mais uma nota de lançamento em um calendário já entupido de anúncios de IA. É o primeiro momento, desde que a corrida realmente começou, em que uma empresa chega a um limite tão claro que precisa criar <em>duas versões</em> do mesmo modelo: uma que pode tudo e fica com os especialistas, e outra que pode quase tudo e vai para o resto do mundo. Fable e Mythos compartilham o mesmo cérebro. A diferença é um conjunto de classificadores de segurança — barreiras de programa que, quando detectam um comando que pode levar a um ataque cibernético ou à síntese de uma toxina, redirecionam a resposta para o modelo anterior, o Opus 4.8. O nome "Fable" (do latim <em>fabula</em>, "aquilo que é contado") não é acidental: é uma declaração de que a versão pública conta uma história <em>segura</em>, adequada para consumo geral, enquanto a Mythos é a narrativa completa.</p>
+929|
+930|        <div class="editorial-pullquote">
+931|          "Fable 5 é o primeiro modelo na história da indústria que precisa de uma versão reduzida de si mesmo para poder existir socialmente."
+932|          <span class="attribution">— A constatação incômoda sobre o estado da arte em IA</span>
+933|        </div>
+934|
+935|        <p><strong>O salto é real, e não é incremental.</strong> Quando a Anthropic lançou o Mythos Preview em abril, os comparativos já tinham deixado claro que algo fundamental havia mudado: 93,9% no SWE-bench Verified, 97,6% no USAMO 2026, 94,5% no GPQA Diamond — números que não apenas batiam qualquer concorrente, mas em alguns casos <em>dobravam</em> o desempenho do Opus 4.6. A diferença agora é que esses números não estão mais trancados em um programa de acesso restrito. Estão disponíveis na API por US$ 10 por milhão de tokens de entrada e US$ 50 por milhão de tokens de saída — menos da metade do preço do Mythos Preview — e, até 22 de junho, sem custo adicional para assinantes dos planos Pro, Max, Team e Enterprise. A mensagem é clara: <em>usem, explorem, quebrem</em>. A janela de gratuidade não é generosidade; é coleta de dados de segurança em escala, com retenção obrigatória de 30 dias para todo o tráfego.</p>
+936|
+937|      </div>
+938|    </div>
+939|
+940|  </div>
+941|</div>
+942|
+943|<!-- =============================================================
+944|     PAGE 2: EDITORIAL (CONTINUED) + STATS
+945|     ============================================================= -->
+946|<div class="page">
+947|  <div class="bg-grid"></div>
+948|  <div class="ambient-glow-2"></div>
+949|  <div class="content">
+950|
+951|    <div class="editorial-section">
+952|      <div class="editorial-text">
+953|
+954|        <p class="no-indent"><strong>O caso de uso que mais impressiona, e que deve mobilizar a atenção de qualquer diretor de tecnologia, é o da Stripe.</strong> Em testes internos, o Fable 5 executou uma migração de código em um monólito Ruby de 50 milhões de linhas — algo que uma equipe inteira levaria mais de dois meses para fazer manualmente — em <em>um único dia</em>. "Comprimiu meses de engenharia em dias", disse a Stripe. O que isso significa, em termos práticos, é que a barreira entre "ter uma ideia" e "ter um sistema funcionando" encolheu dramaticamente. Não para tarefas de brinquedo, não para protótipos: para operações reais em bases de código reais, com riscos reais de regressão.</p>
+955|
+956|        <p>O Cursor, ambiente de desenvolvimento que já usa o modelo em acesso antecipado, resumiu o momento com a precisão de quem está na linha de frente: <em>"Fable 5 abriu uma classe de problemas de horizonte longo que estavam fora do alcance dos modelos anteriores."</em> Traduzindo: antes, você precisava de engenheiros seniores para planejar, dividir em subtarefas, supervisionar a execução e revisar o resultado. Agora, você entrega o problema e volta no dia seguinte.</p>
+957|
+958|        <div class="stat-row">
+959|          <div class="stat-item">
+960|            <div class="stat-number">50M</div>
+961|            <div class="stat-label">Linhas de código<br>migradas em 1 dia</div>
+962|          </div>
+963|          <div class="stat-item">
+964|            <div class="stat-number">93,9%</div>
+965|            <div class="stat-label">SWE-bench<br>Verified</div>
+966|          </div>
+967|          <div class="stat-item">
+968|            <div class="stat-number">US$ 965B</div>
+969|            <div class="stat-label">Valor de mercado<br>no IPO Anthropic</div>
+970|          </div>
+971|          <div class="stat-item">
+972|            <div class="stat-number">10×</div>
+973|            <div class="stat-label">Aceleração no design<br>de proteínas</div>
+974|          </div>
+975|        </div>
+976|
+977|        <p><strong>A dimensão científica do lançamento é igualmente impressionante, embora menos comentada.</strong> O Mythos 5, na versão sem restrições para laboratórios parceiros, produziu <em>9 candidatos fortes a fármacos a partir de 14 alvos proteicos</em> — incluindo alvos em pontos de controle imunológicos, neurodegeneração e doenças musculares. Sem assistência humana. Escolhendo os sítios de ligação, executando ferramentas de design de proteínas, recuperando-se de falhas. Em testes cegos, cientistas preferiram as hipóteses geradas pelo Mythos 5 às do Opus 4.8 em cerca de 80% dos casos. Uma hipótese sobre <em>E. coli</em> foi corroborada de forma independente por um laboratório poucas semanas depois.</p>
+978|
+979|        <p>Há também um dado de genômica que vale por si só: o Mythos 5 conduziu pesquisa autônoma abrangendo <strong>138 espécies animais</strong> (dados de célula única) e, em um dos achados, projetou e treinou um modelo de aprendizado de máquina 100 vezes menor que um publicado na <em>Science</em> — e o superou. Os resultados serão publicados nos próximos meses. Este é o tipo de feito que deveria estar na capa de todos os jornais. Em vez disso, está enterrado na seção de "pesquisa" do anúncio de lançamento.</p>
+980|
+981|        <p><strong>Mas a história mais importante talvez não seja o que o modelo faz. É o que ele <em>não pode</em> fazer.</strong> E é aqui que a edição de hoje dobra a aposta narrativa.</p>
+982|
+983|      </div>
+984|    </div>
+985|
+986|  </div>
+987|</div>
+988|
+989|<!-- =============================================================
+990|     PAGE 3: EDITORIAL (END) — SEGURANÇA, POLÍTICA, CONCLUSÃO
+991|     ============================================================= -->
+992|<div class="page">
+993|  <div class="bg-grid"></div>
+994|  <div class="ambient-glow"></div>
+995|  <div class="content">
+996|
+997|    <div class="editorial-section">
+998|      <div class="editorial-text">
+999|
+1000|        <p class="no-indent">A segurança do Fable 5 é implementada por três classificadores de IA — cibersegurança, biologia e química, e destilação (proteção contra engenharia reversa do modelo) — que operam em tempo real. Quando um comando é sinalizado, a resposta vem do Claude Opus 4.8, não do Fable 5. A Anthropic realizou mais de 1.000 horas de teste de invasão externo sem encontrar um único desbloqueio universal. O Instituto de Segurança de IA do Reino Unido fez progresso em direção a um desbloqueio universal dentro de uma janela breve, mas não o completou. Trinta técnicas conhecidas de desbloqueio foram testadas — zero eficazes.</p>
+1001|1001|
+1002|        <p>O paradoxo, claro, é que <strong>95% das sessões do Fable 5 nunca acionam nenhum desses classificadores</strong>. Para o desenvolvedor comum — e para 99% dos leitores desta publicação — o modelo simplesmente funciona, sem restrições perceptíveis. A segurança, para o usuário médio, é invisível. Para o ator malicioso, é intransponível. Esse é o desenho ideal de contenção.</p>
+1003|
+1004|        <div class="editorial-pullquote">
+1005|          "A segurança do Fable 5 é invisível para 95% dos usuários e intransponível para os 5% restantes. O problema é que os 5% certos ainda podem estar do lado de fora."
+1006|          <span class="attribution">— O dilema da contenção seletiva em modelos de fronteira</span>
+1007|        </div>
+1008|
+1009|        <p><strong>A pergunta que fica pairando, no entanto, é política e existencial.</strong> Se a Anthropic — que se constituiu em torno da segurança como valor fundador — chegou a este ponto e decidiu que a versão pública precisa de algemas, o que isso diz sobre as empresas que não têm esse compromisso? Ou, pior, sobre as que têm compromisso apenas com o lucro? Em abril, o Mythos Preview já havia encontrado <em>milhares</em> de vulnerabilidades inéditas em todos os principais sistemas operacionais e navegadores — incluindo uma falha de 27 anos no OpenBSD que sobreviveu a décadas de testes automatizados. Agora, a versão quase completa desse poder está nas mãos de parceiros de infraestrutura crítica em 15 países, via Project Glasswing. A pergunta não é se essa capacidade vai vazar — é <strong>o que acontece quando vazar</strong>.</p>
+1010|
+1011|        <p>Este lançamento também não acontece no vácuo competitivo. A Anthropic protocolou seu pedido de abertura de capital na SEC em 1º de junho — mesma semana em que Elon Musk iniciou a apresentação do IPO da SpaceX (valor alvo de US$ 2 trilhões) e a OpenAI se prepara para protocolar o seu. É a maior onda de abertura de capital da história da tecnologia, e o fio condutor entre as três empresas é o mesmo: inteligência artificial de fronteira. O que o mercado está comprando não é um produto, mas uma aposta em <em>capacidade futura</em>. O Fable 5 é a materialização dessa aposta — a primeira vez que o "futuro" pode ser testado por qualquer desenvolvedor com uma chave de API.</p>
+1012|
+1013|        <p><strong>E o futuro, pelo menos por ora, tem preço e limite.</strong> O custo por token do Fable 5 é o dobro do Opus 4.8 (US$ 10/US$ 50 contra US$ 5/US$ 25 por milhão de tokens). A justificativa é que, para tarefas complexas, o Fable 5 faz em uma chamada o que o Opus faria em várias — e a economia líquida ainda favorece o modelo mais caro. Nove de junho de 2026, então, é o dia em que a IA deixou de ser um exercício de possibilidade e se tornou um exercício de <em>escolha</em>. Escolha entre versões. Escolha entre segurança e capacidade. Escolha entre pagar mais por autonomia ou pagar menos por supervisão. A Mythos abriu uma porta que não pode mais ser fechada. O Fable 5 é o corredor pelo qual vamos passar — e a pergunta que fica, para cada um de nós, é: <strong>para onde estamos indo?</strong></p>
+1014|
+1015|        <div class="sources-block" style="margin-top:10px;"><strong>Fontes do editorial:</strong> <a href="https://www.anthropic.com/news/claude-fable-5-mythos-5">Anthropic Blog</a> · <a href="https://techcrunch.com/2026/06/09/anthropic-released-claude-fable-5-its-most-powerful-model-publicly-days-after-warning-ai-is-getting-too-dangerous/">TechCrunch</a> · <a href="https://www.wired.com/story/anthropic-releases-claude-fable-5-mythos-5/">WIRED</a> · <a href="https://www.cnbc.com/2026/06/09/anthropic-mythos-claude-fable-5.html">CNBC</a> · <a href="https://www.reuters.com/technology/anthropic-rolls-out-public-version-mythos-without-cybersecurity-capability-2026-06-09/">Reuters</a> · <a href="https://www.cnbc.com/2026/06/01/anthropic-ipo-s1-prospectus.html">CNBC (IPO)</a> · <a href="https://thehackernews.com/2026/04/anthropics-claude-mythos-finds.html">The Hacker News</a></div>
+1016|
+1017|      </div>
+1018|    </div>
+1019|
+1020|1025|
+1026|  </div>
+1027|</div>
+1028|
+1029|<!-- =============================================================
+1030|     PAGE 4: FEATS — SOFTWARE ENGINEERING + BENCHMARKS
+1031|     ============================================================= -->
+1032|<div class="page">
+1033|  <div class="bg-grid"></div>
+1034|  <div class="ambient-glow-2"></div>
+1035|  <div class="content">
+1036|
+1037|    <span class="special-banner">✦ Catálogo de Proezas</span>
+1038|
+1039|    <header style="display:flex; justify-content:space-between; align-items:flex-end; padding-bottom:14px; margin-bottom:22px; border-bottom:1px solid rgba(10,143,136,0.2);">
+1040|      <div>
+1041|        <h1 style="font-family:var(--font-title); font-weight:900; font-size:18px; letter-spacing:-0.3px; line-height:1.1;">
+1042|          <span style="background:linear-gradient(90deg,var(--text-primary)25%,var(--accent-hover)100%); background-clip:text; -webkit-background-clip:text; -webkit-text-fill-color:transparent;">Engenharia &amp; Comparativos</span>
+1043|        </h1>
+1044|        <span style="font-size:9px; color:var(--text-secondary);">O que Fable 5 e Mythos 5 realmente sabem fazer</span>
+1045|      </div>
+1046|      <span style="font-family:var(--font-code); font-size:8px; color:var(--accent-primary); font-weight:700;">Parte 1/3</span>
+1047|    </header>
+1048|
+1049|    <!-- Engenharia de Software -->
+1050|    <div class="section">
+1051|      <div class="section-title">
+1052|        <span>
+1053|          <svg class="title-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+1054|          Engenharia de Software
+1055|        </span>
+1056|        <div class="line"></div>
+1057|      </div>
+1058|
+1059|      <div class="feat-grid">
+1060|
+1061|        <div class="feat-card">
+1062|          <div class="feat-card-title">
+1063|            <svg class="feat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg>
+1064|            Stripe: 50 milhões de linhas em um dia
+1065|          </div>
+1066|          <div class="feat-card-body">
+1067|            Em testes internos, o Fable 5 executou uma <strong>migração de código completa</strong> no monólito Ruby de 50 milhões de linhas da Stripe — um projeto que uma equipe de engenheiros levaria mais de dois meses para concluir manualmente. O modelo compreendeu a arquitetura, planejou a migração em múltiplos arquivos interdependentes e executou tudo de forma autônoma, com validação do próprio trabalho. A Stripe descreveu o resultado como <strong>"meses de engenharia comprimidos em dias"</strong>.
+1068|          </div>
+1069|          <div class="sources-block"><strong>Fontes:</strong> <a href="https://www.anthropic.com/news/claude-fable-5-mythos-5">Anthropic — Anúncio oficial</a> · Stripe internal testing, Jun 2026</div>
+1070|        </div>
+1071|
+1072|        <div class="feat-card">
+1073|          <div class="feat-card-title">
+1074|            <svg class="feat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+1075|            Cursor: uma nova classe de problemas
+1076|          </div>
+1077|          <div class="feat-card-body">
+1078|            A equipe do Cursor (ambiente de desenvolvimento com IA) relatou que o Fable 5 <strong>"abriu uma classe de problemas de horizonte longo que estavam fora do alcance de modelos anteriores"</strong>. Aplicações que antes exigiam cem comandos e supervisão constante agora são resolvidas em uma única interação. Um parceiro inicial resumiu: <strong>"Aplicativos que exigiam cem comandos há um ano, o Fable 5 resolve de uma só vez."</strong>
+1079|          </div>
+1080|          <div class="sources-block"><strong>Fontes:</strong> <a href="https://www.cosmicjs.com/blog/claude-fable-5-what-it-is-what-it-means-for-developers">Cosmic JS — Guia para desenvolvedores</a> · Cursor early-access partner</div>
+1081|        </div>
+1082|
+1083|        <div class="feat-card">
+1084|          <div class="feat-card-title">
+1085|            <svg class="feat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+1086|            Mozilla: 271 falhas encontradas no Firefox
+1087|          </div>
+1088|          <div class="feat-card-body">
+1089|            Durante o período de acesso ao Mythos Preview, a <strong>Mozilla</strong> utilizou o modelo para encontrar <strong>271 vulnerabilidades no Firefox</strong> — um volume de descoberta que teria exigido uma equipe de segurança dedicada por meses. Este caso ilustra o potencial defensivo da tecnologia: encontrar falhas antes que agentes maliciosos o façam.
+1090|          </div>
+1091|          <div class="sources-block"><strong>Fontes:</strong> <a href="https://www.wired.com/story/anthropic-releases-claude-fable-5-mythos-5/">WIRED — Cobertura Fable 5 / Mythos 5</a> · Mozilla case study</div>
+1092|        </div>
+1093|
+1094|        <div class="feat-card">
+1095|          <div class="feat-card-title">
+1096|            <svg class="feat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+1097|            Autonomia agentiva: refatoração sem supervisão
+1098|          </div>
+1099|          <div class="feat-card-body">
+1100|            A Rakuten destacou a capacidade do Fable 5 de <strong>refletir e validar o próprio trabalho</strong>: <em>"No nível máximo de esforço, o Fable reflete e valida seu próprio resultado... Para nós, é isso que torna operações altamente autônomas possíveis — o pensamento extra se paga."</em> A Base44 relatou que o modelo é excepcional em <strong>"criar aplicativos completos de uma só vez"</strong> e possui <strong>"excelente chamada de ferramentas"</strong>.
+1101|          </div>
+1102|          <div class="sources-block"><strong>Fontes:</strong> <a href="https://techcrunch.com/2026/06/09/anthropic-released-claude-fable-5-its-most-powerful-model-publicly-days-after-warning-ai-is-getting-too-dangerous/">TechCrunch — Lançamento do Fable 5</a> · Rakuten e Base44 early-access</div>
+1103|        </div>
+1104|
+1105|      </div>
+1106|    </div>
+1107|
+1108|    <!-- Benchmark Table -->
+1109|    <div class="section">
+1110|      <div class="section-title">
+1111|        <span>
+1112|          <svg class="title-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>
+1113|          Dominância nos Comparativos
+1114|        </span>
+1115|        <div class="line"></div>
+1116|      </div>
+1117|
+1118|      <p style="font-size:10.5px; color:var(--text-secondary); margin-bottom:10px; line-height:1.5;">
+1119|        O Mythos Preview estabeleceu o novo estado da arte em <strong>todos</strong> os comparativos compartilhados com concorrentes. Dados do preview (abril/2026); Fable 5 e Mythos 5 são ainda mais capazes.
+1120|      </p>
+1121|
+1122|      <div class="bench-table-wrap">
+1123|        <table class="bench-table">
+1124|          <thead>
+1125|            <tr>
+1126|              <th>Comparativo</th>
+1127|              <th>Mythos Pr.</th>
+1128|              <th>Opus 4.6</th>
+1129|              <th>GPT-5.4</th>
+1130|              <th>Gemini 3.1</th>
+1131|              <th>Δ vs Opus</th>
+1132|            </tr>
+1133|          </thead>
+1134|          <tbody>
+1135|            <tr>
+1136|              <td>SWE-bench Verified</td>
+1137|              <td class="best">93,9%</td><td>80,8%</td><td>—</td><td>80,6%</td>
+1138|              <td class="delta-pos">+13,1</td>
+1139|            </tr>
+1140|            <tr>
+1141|              <td>SWE-bench Pro</td>
+1142|              <td class="best">77,8%</td><td>53,4%</td><td>57,7%</td><td>54,2%</td>
+1143|              <td class="delta-pos">+24,4</td>
+1144|            </tr>
+1145|            <tr>
+1146|              <td>SWE-bench Multilingual</td>
+1147|              <td class="best">87,3%</td><td>77,8%</td><td>—</td><td>—</td>
+1148|              <td class="delta-pos">+9,5</td>
+1149|            </tr>
+1150|            <tr>
+1151|              <td>SWE-bench Multimodal</td>
+1152|              <td class="best">59,0%</td><td>27,1%</td><td>—</td><td>—</td>
+1153|              <td class="delta-pos">+31,9</td>
+1154|            </tr>
+1155|            <tr>
+1156|              <td>Terminal-Bench 2.0 (4h)</td>
+1157|              <td class="best">92,1%</td><td>—</td><td>75,3%</td><td>—</td>
+1158|              <td class="delta-pos">+16,8*</td>
+1159|            </tr>
+1160|            <tr>
+1161|              <td>USAMO 2026</td>
+1162|              <td class="best">97,6%</td><td>42,3%</td><td>95,2%</td><td>74,4%</td>
+1163|              <td class="delta-pos">+55,3</td>
+1164|            </tr>
+1165|            <tr>
+1166|              <td>GPQA Diamond</td>
+1167|              <td class="best">94,5%</td><td>91,3%</td><td>92,8%</td><td>94,3%</td>
+1168|              <td class="delta-pos">+3,2</td>
+1169|            </tr>
+1170|            <tr>
+1171|              <td>HLE (com ferramentas)</td>
+1172|              <td class="best">64,7%</td><td>53,1%</td><td>52,1%</td><td>51,4%</td>
+1173|              <td class="delta-pos">+11,6</td>
+1174|            </tr>
+1175|            <tr>
+1176|              <td>GraphWalks BFS 256K–1M</td>
+1177|              <td class="best">80,0%</td><td>38,7%</td><td>21,4%</td><td>—</td>
+1178|              <td class="delta-pos">+41,3</td>
+1179|            </tr>
+1180|            <tr>
+1181|              <td>OSWorld (área de trabalho)</td>
+1182|              <td class="best">79,6%</td><td>72,7%</td><td>75,0%</td><td>—</td>
+1183|              <td class="delta-pos">+6,9</td>
+1184|            </tr>
+1185|          </tbody>
+1186|        </table>
+1187|      </div>
+1188|
+1189|      <div class="callout-box">
+1190|        <div class="callout-title">
+1191|          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#06b8a0" stroke-width="2.2" style="vertical-align:-2px;margin-right:4px;"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+1192|          O maior salto individual já registrado
+1193|        </div>
+1194|        O <strong>USAMO 2026</strong> (Olimpíada de Matemática dos EUA) viu o maior salto já registrado em um comparativo de IA: de 42,3% (Opus 4.6) para <strong>97,6%</strong> — um aumento de 55,3 pontos percentuais. No <strong>SWE-bench Pro</strong> (nível mais difícil, projetado para resistir a manipulação do comparativo), o Mythos lidera sobre a GPT-5.4 por 20,1 pontos. No <strong>GraphWalks</strong>, que testa raciocínio contextual em janelas longas (256K a 1M tokens), o Mythos quadruplica a GPT-5.4. Esses não são ganhos marginais: são degraus qualitativos.
+1195|        <div class="sources-block" style="margin-top:10px;"><strong>Fontes:</strong> <a href="https://www.anthropic.com/news/claude-fable-5-mythos-5">Anthropic Blog</a> · <a href="https://www.nxcode.io/resources/news/claude-mythos-benchmarks-93-swe-bench-every-record-broken-2026">NxCode — Análise de benchmarks</a> · <a href="https://benchlm.ai/benchmarks/sweVerified">BenchLM Leaderboard</a></div>
+1196|      </div>
+1197|
+1198|    </div>
+1199|
+1200|1205|
+1206|  </div>
+1207|</div>
+1208|
+1209|<!-- =============================================================
+1210|     PAGE 5: FEATS — CIÊNCIA, VISÃO, AUTONOMIA
+1211|     ============================================================= -->
+1212|<div class="page">
+1213|  <div class="bg-grid"></div>
+1214|  <div class="ambient-glow"></div>
+1215|  <div class="content">
+1216|
+1217|    <span class="special-banner">✦ Catálogo de Proezas</span>
+1218|
+1219|    <header style="display:flex; justify-content:space-between; align-items:flex-end; padding-bottom:14px; margin-bottom:22px; border-bottom:1px solid rgba(10,143,136,0.2);">
+1220|      <div>
+1221|        <h1 style="font-family:var(--font-title); font-weight:900; font-size:18px; letter-spacing:-0.3px; line-height:1.1;">
+1222|          <span style="background:linear-gradient(90deg,var(--text-primary)25%,var(--accent-hover)100%); background-clip:text; -webkit-background-clip:text; -webkit-text-fill-color:transparent;">Ciência, Visão &amp; Autonomia</span>
+1223|        </h1>
+1224|        <span style="font-size:9px; color:var(--text-secondary);">Da descoberta de fármacos ao Pokémon FireRed</span>
+1225|      </div>
+1226|      <span style="font-family:var(--font-code); font-size:8px; color:var(--accent-primary); font-weight:700;">Parte 2/3</span>
+1227|    </header>
+1228|
+1229|    <!-- Drug Design -->
+1230|    <div class="section">
+1231|      <div class="section-title">
+1232|        <span>
+1233|          <svg class="title-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+1234|          Ciência da Vida &amp; Descoberta de Fármacos
+1235|        </span>
+1236|        <div class="line"></div>
+1237|      </div>
+1238|
+1239|      <div class="feat-grid">
+1240|
+1241|        <div class="feat-card">
+1242|          <div class="feat-card-title">
+1243|            <svg class="feat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+1244|            Design de proteínas 10× mais rápido
+1245|          </div>
+1246|          <div class="feat-card-body">
+1247|            Com o <strong>Mythos 5</strong>, a equipe interna de design de proteínas da Anthropic acelerou o processo de descoberta de fármacos em <strong>cerca de 10 vezes</strong>. O modelo operou <strong>sem assistência humana</strong>: escolheu os sítios de ligação, executou ferramentas de bioinformática e se recuperou de falhas de forma autônoma. Resultado: <strong>9 de 14 alvos proteicos</strong> retornaram candidatos a fármacos fortes — incluindo alvos em pontos de controle imunológicos, neurodegeneração e doenças musculares.
+1248|          </div>
+1249|          <div class="sources-block"><strong>Fontes:</strong> <a href="https://www.anthropic.com/news/claude-fable-5-mythos-5">Anthropic — Drug design evaluation</a> · Mythos 5 protein research</div>
+1250|        </div>
+1251|
+1252|        <div class="feat-card">
+1253|          <div class="feat-card-title">
+1254|            <svg class="feat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+1255|            Hipóteses preferidas 80% das vezes por cientistas
+1256|          </div>
+1257|          <div class="feat-card-body">
+1258|            Em comparações cegas, as hipóteses geradas pelo Mythos 5 foram preferidas <strong>~80% das vezes</strong> em relação às geradas por modelos da classe Opus. Uma hipótese sobre <em>E. coli</em> foi <strong>corroborada de forma independente</strong> por um laboratório acadêmico — validando não apenas a capacidade preditiva do modelo, mas sua utilidade como ferramenta real de descoberta científica. Publicação no biorXiv, março de 2026.
+1259|          </div>
+1260|          <div class="sources-block"><strong>Fontes:</strong> <a href="https://www.anthropic.com/news/claude-fable-5-mythos-5">Anthropic — Biology evaluation</a> · <a href="https://www.biorxiv.org/content/10.64898/2026.03.12.711259v1">biorXiv — Estudo independente</a></div>
+1261|        </div>
+1262|
+1263|        <div class="feat-card">
+1264|          <div class="feat-card-title">
+1265|            <svg class="feat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/></svg>
+1266|            Genômica em 138 espécies animais
+1267|          </div>
+1268|          <div class="feat-card-body">
+1269|            O Mythos 5 conduziu pesquisa autônoma de genômica de célula única abrangendo <strong>138 espécies animais</strong>. Em uma das descobertas, projetou e treinou um modelo de aprendizado de máquina <strong>100 vezes menor</strong> que um modelo publicado na revista <em>Science</em> — e o <strong>superou em desempenho</strong>. Os resultados serão publicados nos próximos meses. Este feito isoladamente já justificaria um artigo de primeiro autor.
+1270|          </div>
+1271|          <div class="sources-block"><strong>Fontes:</strong> <a href="https://www.anthropic.com/news/claude-fable-5-mythos-5">Anthropic — Genomics research</a> · 138 species, single-cell data</div>
+1272|        </div>
+1273|
+1274|      </div>
+1275|    </div>
+1276|
+1277|    <!-- Vision & Creative -->
+1278|    <div class="section">
+1279|      <div class="section-title">
+1280|        <span>
+1281|          <svg class="title-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+1282|          Visão, Criatividade &amp; Autonomia
+1283|        </span>
+1284|        <div class="line"></div>
+1285|      </div>
+1286|
+1287|      <div class="feat-grid">
+1288|
+1289|        <div class="feat-card">
+1290|          <div class="feat-card-title">
+1291|            <svg class="feat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="2.18"/><circle cx="12" cy="12" r="4"/></svg>
+1292|            Novo estado da arte em visão computacional
+1293|          </div>
+1294|          <div class="feat-card-body">
+1295|            O Fable 5 consegue extrair números precisos de figuras científicas complexas e, num feito que impressionou até os engenheiros da Anthropic, <strong>reconstruiu o código-fonte completo de uma aplicação web a partir apenas de capturas de tela</strong> — sem inspeção de estrutura da página, sem acesso ao código, apenas observando os pixels. Isso abre caminho para geração de front-end a partir de protótipos visuais, auditoria de interfaces e extração de dados de gráficos e diagramas.
+1296|          </div>
+1297|          <div class="sources-block"><strong>Fontes:</strong> <a href="https://www.anthropic.com/news/claude-fable-5-mythos-5">Anthropic — Vision capabilities</a> · New SOTA computer vision</div>
+1298|        </div>
+1299|
+1300|        <div class="feat-card">
+1301|          <div class="feat-card-title">
+1302|            <svg class="feat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M12 12h.01M6 12h.01M18 12h.01"/></svg>
+1303|            Pokémon FireRed zerado apenas com visão
+1304|          </div>
+1305|          <div class="feat-card-body">
+1306|            O Fable 5 zerou <strong>Pokémon FireRed</strong> usando apenas visão — sem acesso à memória do jogo, sem ajuda de emulador, apenas observando a tela. Modelos anteriores precisavam de suporte complexo. O Fable 5 fez com um conjunto mínimo de ferramentas. No processo, encontrou um item (HM03 Surf) e ignorou outro (HM04 Strength) — comportamento que mostra tanto autonomia quanto a imprevisibilidade que persiste em agentes visuais.
+1307|          </div>
+1308|          <div class="sources-block"><strong>Fontes:</strong> <a href="https://www.anthropic.com/news/claude-fable-5-mythos-5">Anthropic — Vision-only gameplay</a> · <a href="https://www.lesswrong.com/posts/sehJYg5Yny9fvpbpt/a-year-late-claude-finally-beats-pokemon">LessWrong — Pokémon analysis</a></div>
+1309|        </div>
+1310|
+1311|        <div class="two-col">
+1312|          <div class="feat-card">
+1313|            <div class="feat-card-title">
+1314|              <svg class="feat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="2"/><path d="M12 2v4M12 18v4M2 12h4M18 12h4"/></svg>
+1315|              Simulação de sistema solar
+1316|            </div>
+1317|            <div class="feat-card-body" style="font-size:11.5px;">
+1318|              Construiu simulação física de <strong>sistema solar</strong> com previsão de eclipses — modelo gravitacional completo e predição de eventos astronômicos.
+1319|            </div>
+1320|          </div>
+1321|          <div class="feat-card">
+1322|            <div class="feat-card-title">
+1323|              <svg class="feat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18"/><line x1="3" y1="9" x2="21" y2="9"/></svg>
+1324|              Fábrica autônoma no Factorio
+1325|            </div>
+1326|            <div class="feat-card-body" style="font-size:11.5px;">
+1327|              Jogou <strong>Factorio</strong> de forma totalmente autônoma — projetando fábricas, gerenciando logística e otimizando cadeias de produção.
+1328|            </div>
+1329|          </div>
+1330|        </div>
+1331|
+1332|        <div class="two-col">
+1333|          <div class="feat-card">
+1334|            <div class="feat-card-title">
+1335|              <svg class="feat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+1336|              Modelo CAD 3D para impressão
+1337|            </div>
+1338|            <div class="feat-card-body" style="font-size:11.5px;">
+1339|              Criou um <strong>modelo CAD 3D</strong> usando um editor no navegador que ele próprio construiu — cadeia completa da ferramenta ao artefato físico.
+1340|            </div>
+1341|          </div>
+1342|          <div class="feat-card">
+1343|            <div class="feat-card-title">
+1344|              <svg class="feat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+1345|              Simulação de fluidos + música
+1346|            </div>
+1347|            <div class="feat-card-body" style="font-size:11.5px;">
+1348|              Escreveu <strong>simulação de fluidos</strong> sincronizada com um <strong>remix de música clássica eletrônica</strong> composto do zero pelo modelo.
+1349|            </div>
+1350|          </div>
+1351|        </div>
+1352|
+1353|        <div class="feat-card">
+1354|          <div class="feat-card-title">
+1355|            <svg class="feat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+1356|            Slay the Spire: memória persistente 3× melhor
+1357|          </div>
+1358|          <div class="feat-card-body">
+1359|            No comparativo <strong>Slay the Spire</strong> — jogo de cartas que exige planejamento estratégico e memória de longo prazo — o Fable 5 com memória persistente <strong>melhorou o desempenho em 3× mais</strong> que o Opus 4.8. O Fable 5 chegou ao ato final <strong>3 vezes mais</strong> frequentemente. Implicações diretas para agentes autônomos que precisam manter contexto por horas: refatorações multi-arquivo, análises longas e fluxos agentivos.
+1360|          </div>
+1361|          <div class="sources-block"><strong>Fontes:</strong> <a href="https://www.anthropic.com/news/claude-fable-5-mythos-5">Anthropic — Memory evaluation</a> · Slay the Spire benchmark</div>
+1362|        </div>
+1363|
+1364|      </div>
+1365|    </div>
+1366|
+1367|1372|
+1373|  </div>
+1374|</div>
+1375|
+1376|<!-- =============================================================
+1377|     PAGE 6: SEGURANÇA, TIMELINE, IMPACTO NO MERCADO
+1378|     ============================================================= -->
+1379|<div class="page">
+1380|  <div class="bg-grid"></div>
+1381|  <div class="ambient-glow-2"></div>
+1382|  <div class="content">
+1383|
+1384|    <span class="special-banner">✦ Catálogo de Proezas</span>
+1385|
+1386|    <header style="display:flex; justify-content:space-between; align-items:flex-end; padding-bottom:14px; margin-bottom:22px; border-bottom:1px solid rgba(10,143,136,0.2);">
+1387|      <div>
+1388|        <h1 style="font-family:var(--font-title); font-weight:900; font-size:18px; letter-spacing:-0.3px; line-height:1.1;">
+1389|          <span style="background:linear-gradient(90deg,var(--text-primary)25%,var(--accent-hover)100%); background-clip:text; -webkit-background-clip:text; -webkit-text-fill-color:transparent;">Segurança, Indústria &amp; Mercado</span>
+1390|        </h1>
+1391|        <span style="font-size:9px; color:var(--text-secondary);">O poder que justifica as algemas — e o impacto global</span>
+1392|      </div>
+1393|      <span style="font-family:var(--font-code); font-size:8px; color:var(--accent-primary); font-weight:700;">Parte 3/3</span>
+1394|    </header>
+1395|
+1396|    <!-- Cibersegurança -->
+1397|    <div class="section">
+1398|      <div class="section-title">
+1399|        <span>
+1400|          <svg class="title-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+1401|          Cibersegurança: O Poder que Justifica as Algemas
+1402|        </span>
+1403|        <div class="line"></div>
+1404|      </div>
+1405|
+1406|      <div class="feat-grid">
+1407|
+1408|        <div class="feat-card">
+1409|          <div class="feat-card-title">
+1410|            <svg class="feat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+1411|            Uma falha de 27 anos no OpenBSD
+1412|          </div>
+1413|          <div class="feat-card-body">
+1414|            O Mythos Preview encontrou uma vulnerabilidade no kernel do <strong>OpenBSD</strong> que <strong>sobreviveu 27 anos</strong> — desde o início do projeto — a todas as auditorias manuais, testes automatizados e varredores de vulnerabilidade. Um <em>overflow</em> de inteiro com sinal no TCP SACK que permitia negação de serviço remota. A descoberta foi publicada como peça central do Project Glasswing. A mensagem: se o sistema mais obcecado com segurança tem uma falha de 27 anos, <strong>todo programa tem falhas que você não conhece</strong>.
+1415|          </div>
+1416|          <div class="sources-block"><strong>Fontes:</strong> <a href="https://thehackernews.com/2026/04/anthropics-claude-mythos-finds.html">The Hacker News — Zero-days do Mythos</a> · <a href="https://www.sovereignmagazine.com/article/claude-mythos-27-year-bug-cost">Sovereign Magazine — Bug de 27 anos</a></div>
+1417|        </div>
+1418|
+1419|        <div class="feat-card">
+1420|          <div class="feat-card-title">
+1421|            <svg class="feat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+1422|            Milhares de vulnerabilidades inéditas em semanas
+1423|          </div>
+1424|          <div class="feat-card-body">
+1425|            Em <strong>semanas</strong> de operação autônoma, o Mythos Preview descobriu <strong>milhares de vulnerabilidades inéditas de alta severidade</strong> em todos os principais sistemas — Windows, Linux, macOS, iOS, Android, Chrome, Firefox, Safari. Incluiu: falha de <strong>17 anos no FreeBSD</strong> (execução remota de código não autenticada no NFS), vulnerabilidade de <strong>16 anos no FFmpeg</strong> (5 milhões de testes de <em>fuzzing</em> não a encontraram) e múltiplas escalações de privilégio no kernel Linux. O Mythos gerou <strong>181 explorações para o Firefox</strong> — contra 2 do Opus 4.6.
+1426|          </div>
+1427|          <div class="sources-block"><strong>Fontes:</strong> <a href="https://thehackernews.com/2026/04/anthropics-claude-mythos-finds.html">The Hacker News — Milhares de zero-days</a> · <a href="https://www.pcworld.com/article/3109427/anthropics-new-ai-found-thousands-of-zero-day-flaws-on-its-own.html">PC World — Cobertura</a></div>
+1428|        </div>
+1429|
+1430|        <div class="feat-card">
+1431|          <div class="feat-card-title">
+1432|            <svg class="feat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+1433|            Arquitetura de segurança do Fable 5
+1434|          </div>
+1435|          <div class="feat-card-body">
+1436|            Três classificadores de segurança em tempo real: <strong>(1) Cibersegurança</strong> — bloqueia exploração e hacking agentivo ofensivo. <strong>(2) Biologia e Química</strong> — previne síntese de toxinas e agentes biológicos. <strong>(3) Destilação</strong> — impede engenharia reversa do modelo. Em <strong>mais de 95% das sessões</strong> não há ativação de classificadores. Em <strong>mais de 1.000 horas de teste de invasão</strong> externo, nenhum desbloqueio universal foi encontrado.
+1437|          </div>
+1438|          <div class="sources-block"><strong>Fontes:</strong> <a href="https://www.anthropic.com/news/claude-fable-5-mythos-5">Anthropic — Safety architecture</a> · <a href="https://anthropic.com/claude-fable-5-mythos-5-system-card">System Card oficial</a></div>
+1439|        </div>
+1440|
+1441|      </div>
+1442|    </div>
+1443|
+1444|    <!-- Timeline -->
+1445|    <div class="section">
+1446|      <div class="section-title">
+1447|        <span>
+1448|          <svg class="title-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+1449|          Linha do Tempo: Da Mythos ao IPO
+1450|        </span>
+1451|        <div class="line"></div>
+1452|      </div>
+1453|
+1454|      <div class="timeline">
+1455|        <div class="timeline-item">
+1456|          <div class="timeline-date">Fevereiro 2026</div>
+1457|          <div class="timeline-text">Mythos Preview descobre <strong>milhares de vulnerabilidades inéditas</strong>. Falha de 27 anos no OpenBSD. Anthropic decide <strong>não liberar ao público</strong>.</div>
+1458|        </div>
+1459|        <div class="timeline-item">
+1460|          <div class="timeline-date">Março 2026</div>
+1461|          <div class="timeline-text">Detalhes do Mythos vazam via <strong>exposição acidental de dados</strong> (Fortune). Codenome interno: "Capybara". Anthropic confirma nova classe de modelo.</div>
+1462|        </div>
+1463|        <div class="timeline-item">
+1464|          <div class="timeline-date">Abril 2026</div>
+1465|          <div class="timeline-text">Anúncio oficial do <strong>Mythos Preview</strong> via Project Glasswing. 93,9% SWE-bench. 97,6% USAMO. Acesso para 12 parceiros (Apple, Google, Microsoft, Amazon, Mozilla, Stripe e outros).</div>
+1466|        </div>
+1467|        <div class="timeline-item">
+1468|          <div class="timeline-date">Maio 2026</div>
+1469|          <div class="timeline-text">Mythos expandido para <strong>centenas de organizações</strong> de infraestrutura crítica em 15 países. SpaceX protocola IPO (alvo US$ 2 tri).</div>
+1470|        </div>
+1471|        <div class="timeline-item">
+1472|          <div class="timeline-date">1 Junho 2026</div>
+1473|          <div class="timeline-text"><strong>Anthropic protocola pedido confidencial de IPO</strong>. Valor de mercado: US$ 965 bi. Receita anualizada: US$ 47 bi.</div>
+1474|        </div>
+1475|        <div class="timeline-item">
+1476|          <div class="timeline-date">✦ 9 Junho 2026</div>
+1477|          <div class="timeline-text"><strong>Lançamento do Fable 5 e Mythos 5.</strong> Fable 5 disponível na API. Sem custo adicional até 22/06. Retenção de dados de 30 dias. <strong>O dia em que a Mythos virou coisa de todo dia.</strong></div>
+1478|        </div>
+1479|      </div>
+1480|    </div>
+1481|
+1482|1487|
+1488|  </div>
+1489|</div>
+1490|
+1491|<!-- =============================================================
+1492|     PAGE 7: IMPACTO NA INDÚSTRIA E MERCADO (FINAL)
+1493|     ============================================================= -->
+1494|<div class="page">
+1495|  <div class="bg-grid"></div>
+1496|  <div class="ambient-glow"></div>
+1497|  <div class="content">
+1498|
+1499|    <div class="section">
+1500|      <div class="section-title">
+1501|1501|        <span>
+1502|          <svg class="title-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+1503|          Impacto na Indústria e no Mercado
+1504|        </span>
+1505|        <div class="line"></div>
+1506|      </div>
+1507|
+1508|      <div class="impact-card">
+1509|        <span class="impact-tag tag-business">IPO</span>
+1510|        <h4>A maior onda de aberturas de capital da história da tecnologia</h4>
+1511|        <p>Anthropic (US$ 965 bi), SpaceX (US$ 2 tri alvo), OpenAI (a protocolar) — três empresas de inteligência artificial de fronteira abrindo capital <strong>simultaneamente</strong>. O Fable 5 é a primeira manifestação pública da capacidade que sustenta esse valor de mercado. O mercado está comprando <strong>capacidade futura</strong>, e o Fable 5 é a primeira vez que essa capacidade pode ser testada por qualquer desenvolvedor.</p>
+1512|      </div>
+1513|
+1514|      <div class="impact-card">
+1515|        <span class="impact-tag tag-business">Precificação</span>
+1516|        <h4>O dilema do custo por token</h4>
+1517|        <p>Fable 5 custa <strong>US$ 10/1M entrada, US$ 50/1M saída</strong> — o dobro do Opus 4.8. A justificativa (autonomia reduz chamadas) é defendida pela Rakuten: <em>"o pensamento extra se paga."</em> A janela sem custo adicional até 22/06 funciona como avaliação em escala — e como coleta de dados de segurança.</p>
+1518|      </div>
+1519|
+1520|      <div class="impact-card">
+1521|        <span class="impact-tag tag-business">Disponibilidade</span>
+1522|        <h4>Parceiros de nuvem e ecossistema</h4>
+1523|        <p>Fable 5 disponível imediatamente em <strong>Amazon Bedrock</strong> e <strong>Microsoft Foundry</strong>. A Microsoft posicionou o modelo como "potencializando a próxima era de agentes autônomos". A Anthropic também anunciou suporte via API direta e planos de consumo Enterprise.</p>
+1524|      </div>
+1525|
+1526|      <div class="impact-card">
+1527|        <span class="impact-tag tag-science">Colaboração</span>
+1528|        <h4>Project Glasswing: defesa em escala global</h4>
+1529|        <p>Consórcio de segurança cibernética reunindo 12 das maiores empresas de tecnologia, organizações de infraestrutura crítica de 15 países e agências dos EUA e Reino Unido. Objetivo: usar a capacidade ofensiva do Mythos para <strong>encontrar e corrigir vulnerabilidades antes que agentes maliciosos possam explorá-las</strong>.</p>
+1530|      </div>
+1531|
+1532|      <div class="impact-card">
+1533|        <span class="impact-tag tag-frontier">Regulação</span>
+1534|        <h4>O precedente regulatório</h4>
+1535|        <p>A decisão de lançar <strong>duas versões</strong> do mesmo modelo — uma segura (Fable) e uma completa (Mythos) — estabelece um precedente que reguladores do mundo inteiro estão observando. Se o modelo de "classificadores + contingência" se provar eficaz, pode se tornar o <strong>padrão regulatório</strong> para liberação de modelos de fronteira.</p>
+1536|      </div>
+1537|
+1538|      <div class="callout-box">
+1539|        <div class="callout-title">
+1540|          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#06b8a0" stroke-width="2.2" style="vertical-align:-2px;margin-right:4px;"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+1541|          O quadro completo
+1542|        </div>
+1543|        O lançamento do Fable 5 e Mythos 5 não é apenas um evento técnico. É a primeira vez que uma empresa de IA de fronteira:<br><br>
+1544|        <strong>1.</strong> Admite publicamente que seu modelo é perigoso demais para liberação irrestrita → e libera mesmo assim (com contenção).<br>
+1545|        <strong>2.</strong> Cria <strong>duas marcas</strong> para o mesmo modelo — separando capacidade de segurança por nome.<br>
+1546|        <strong>3.</strong> Submete o modelo mais poderoso já criado a <strong>retenção obrigatória de dados</strong> de 30 dias como condição de uso.<br>
+1547|        <strong>4.</strong> Faz tudo isso na <strong>véspera do maior IPO da história da IA</strong>.<br><br>
+1548|        Quatro fatores que fazem de 9 de junho de 2026 uma data que merece <strong>sua própria edição extraordinária</strong>.
+1549|        <div class="sources-block" style="margin-top:10px;"><strong>Fontes principais desta edição:</strong> <a href="https://www.anthropic.com/news/claude-fable-5-mythos-5">Anthropic</a> · <a href="https://techcrunch.com/2026/06/09/anthropic-released-claude-fable-5-its-most-powerful-model-publicly-days-after-warning-ai-is-getting-too-dangerous/">TechCrunch</a> · <a href="https://www.wired.com/story/anthropic-releases-claude-fable-5-mythos-5/">WIRED</a> · <a href="https://www.cnbc.com/2026/06/09/anthropic-mythos-claude-fable-5.html">CNBC</a> · <a href="https://www.reuters.com/technology/anthropic-rolls-out-public-version-mythos-without-cybersecurity-capability-2026-06-09/">Reuters</a> · <a href="https://www.cnbc.com/2026/06/01/anthropic-ipo-s1-prospectus.html">CNBC (IPO)</a> · <a href="https://www.nxcode.io/resources/news/claude-mythos-benchmarks-93-swe-bench-every-record-broken-2026">NxCode</a> · <a href="https://thehackernews.com/2026/04/anthropics-claude-mythos-finds.html">The Hacker News</a> · <a href="https://www.cosmicjs.com/blog/claude-fable-5-what-it-is-what-it-means-for-developers">Cosmic JS</a></div>
+1550|      </div>
+1551|
+1552|    </div>
+1553|
+1554|1559|
+1560|  </div>
+1561|</div>
+1562|
+1563|</body>
+1564|</html>
+1565|
